@@ -1,0 +1,108 @@
+.aboutContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  gap: 3.5rem;
+  padding: 8rem 2rem 2rem;
+}
+.aboutImg {
+  width: 85%;
+}
+.aboutImg img {
+  width: 100%;
+}
+li {
+  list-style-type: none;
+}
+.row1 h1 {
+  font-family: "Abhaya Libre";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 54px;
+  line-height: 50px;
+  letter-spacing: 0.01em;
+}
+.aboutSection p {
+  font-family: Inter;
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 25px;
+  letter-spacing: 0.01em;
+  text-align: left;
+}
+.row3 {
+  margin-top: 35%;
+}
+.about-title h3 {
+  margin-top: 3rem;
+  font-family: Inter;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 34px;
+  letter-spacing: 0.01em;
+  text-align: left;
+}
+.roles-section {
+  margin-bottom: 1.8rem;
+}
+.role-name {
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  text-align: left;
+}
+.role {
+  font-family: Inter;
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 25px;
+  letter-spacing: 0.01em;
+  text-align: left;
+}
+.input-con-flex {
+  display: flex;
+  margin-top: 3.6rem;
+  gap: 3rem;
+  border-bottom: 1px solid black;
+  width: 270px;
+  justify-content: space-between;
+}
+.input-con-flex input {
+  font-size: 16px;
+  border: 0;
+  outline: none;
+  padding: 0 1rem 0.6rem 0.7rem;
+}
+/* Media Queries */
+@media (max-width: 768px) {
+  .aboutContent {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem 2rem 2rem;
+  }
+  .aboutImg {
+    width: 100%;
+  }
+  .aboutSection p {
+    font-size: 15px;
+  }
+  .row1 h1 {
+    font-size: 40px;
+  }
+  .row3 {
+    margin-top: 0;
+  }
+  .about-title h3 {
+    margin-top: 3.5rem;
+    font-family: Inter;
+    font-size: 20px;
+  }
+  .fixedLeft {
+    position: static;
+  }
+  .fixedRight {
+    position: static;
+  }
+}
