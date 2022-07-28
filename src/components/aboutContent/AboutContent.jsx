@@ -1,64 +1,23 @@
-import { useState } from 'react'
 import { FaGreaterThan } from 'react-icons/fa'
 import aboutImg from '../../images/forward-about.png'
 import './AboutContent.css'
-import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 
 function AboutContent() {
 const navigate = useNavigate();
 
-const [ subscriberFormData, setSubscriberFormData ] = useState({
-    email: ''
-});
-
-const { email } = subscriberFormData;
-
-const handleSubscriberFormChange = ( event ) => {
-    setSubscriberFormData(( prevState ) => ({
-        ...prevState,
-        [ event.target.name ] : event.target.value
-    }))
+const handleSubmit = (e) => {
+    e.preventDefault();
+    let myForm = document.getElementById("sub");
+    let formData = new FormData(myForm);
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then(() => console.log("Form successfully submitted"))
+      .catch((error) => alert(error));
 };
-
-const resetSubscriberForm = () => {
-    setSubscriberFormData(( prevState ) => ({
-        ...prevState,
-        email: ''
-    }))
-}
-
-const submitSubscriberForm = async (event ) => {
-    event.preventDefault()
-
-    const subscriberData = { email }
-
-    fetch('http://localhost:5000/api/subscribers', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-
-        body: JSON.stringify(subscriberData),
-    })
-    .then(response => response.json())
-    .then(data => {
-        resetSubscriberForm()
-        
-        toast.success('Newsletter subscription was successful!', {
-            position: "bottom-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            });
-    })
-    .catch((err) => {
-        console.log('Error:', err);
-    })
-}
 
     return (
         <div className='aboutContent'>
@@ -131,14 +90,11 @@ const submitSubscriberForm = async (event ) => {
 
                 <li className="role">Subscribe to receive updates</li>
 
-                <form onSubmit={ submitSubscriberForm }>
+                <form onSubmit={ handleSubmit } id="sub" method="POST" data-netlify="true">
                     <div className="input-con-flex">
                         <input type="text" 
                             placeholder='Email'
-                            id='email'
                             name='email'
-                            value={ email }
-                            onChange={ handleSubscriberFormChange } 
                         />
                         <button type='submit' className="discover-Btn">
                             <FaGreaterThan  style={{cursor:'pointer'}}/>
