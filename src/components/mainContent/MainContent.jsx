@@ -217,6 +217,7 @@ const renderOptions = (links) => {
           } else if (item?.category.name.toLowerCase().includes(search.toLowerCase())) {
             return item
           }
+          return false
         }).map((item, i) => (
         <div key={ item?.sys.id }>
             <div className=' text' >
