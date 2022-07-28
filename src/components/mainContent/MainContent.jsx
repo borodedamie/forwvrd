@@ -68,8 +68,6 @@ let { data, errors } = useContenful(GET_STORIES)
 
 const { storyCollection } = data
 
-console.log(storyCollection)
-
 const [visibleBtn , setVisibleBtn] = useState(false)
 
 // scroll functionality
@@ -168,7 +166,7 @@ const renderOptions = (links) => {
               width="100%"
               frameBorder="0"
               scrolling="no"
-              // title={node.data.target.fields.title}
+              title={node.data.target.fields.title}
               allowFullScreen={true}
             />
           );
@@ -204,7 +202,6 @@ const renderOptions = (links) => {
     }
   }
 }
-
 
   return (
     <div className='mainContent'>
