@@ -101,6 +101,10 @@
   bottom: 10px;
   left: 20px;
 }
+.fixedLeft h5{
+  margin-bottom: .6rem;
+  font-size: 1.1rem;
+}
 .fixedRight {
   position: fixed;
   bottom: 10px;
@@ -125,10 +129,20 @@
 .about:hover {
   cursor: pointer;
 }
+.fixedScroll{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 20vh;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 28.65%, #FFFFFF 100%);
+
+}
 .fixedScrollToTop{
   position: fixed;
   bottom: 8%;
-  left: 46%;
+  left: 50%;
 }
 .discover-Btn{
   height: 25px;
