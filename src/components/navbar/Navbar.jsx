@@ -4,7 +4,7 @@ import useContenful from '../../hooks/use-Contenful'
 import { FaGreaterThan } from 'react-icons/fa'
 import { AiOutlineSearch, AiOutlineUp } from 'react-icons/ai'
 import logo from '../../images/logo.png'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 import './Navbar.css'
 import { GlobalContext } from "../../contexts/GlobalContext";
@@ -39,10 +39,6 @@ if(errors)
 
 if(!data) console.log('loading...')
 
-const goHome = () => {
-    navigate('/') 
-}
-
 // call function on the search button when the enter key is pressed
 const onEnter = (event) => {
     if(event.charCode === 13) {
@@ -52,9 +48,11 @@ const onEnter = (event) => {
 
     return (
         <div className='header'>
-            <div onClick={ () => goHome() } className="logo">
-                <img src={logo} alt="" style={{ width: '100px' }} />
-            </div>
+            <Link to="/" reloadDocument="true">
+                <div className="logo">
+                    <img src={logo} alt="" style={{ width: '100px' }} />
+                </div>
+            </Link>
 
         { !displaySearch && 
             <div className="search-box">
