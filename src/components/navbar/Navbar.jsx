@@ -4,7 +4,7 @@ import useContenful from '../../hooks/use-Contenful'
 import { FaGreaterThan } from 'react-icons/fa'
 import { AiOutlineSearch, AiOutlineUp } from 'react-icons/ai'
 import logo from '../../images/logo.png'
-import { useNavigate, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import './Navbar.css'
 import { GlobalContext } from "../../contexts/GlobalContext";
@@ -27,8 +27,6 @@ function Navbar() {
 const { search, setSearch } = useContext(GlobalContext)
 
 const [ displaySearch, setDisplaySearch ] = useState(false)
-
-const navigate = useNavigate();
 
 let { data, errors } = useContenful(GET_CATEGORIES)
 
