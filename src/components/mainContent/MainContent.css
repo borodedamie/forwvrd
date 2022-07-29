@@ -1,5 +1,5 @@
 .mainContent {
-  margin: 100px auto 0px auto;
+  margin: 100px auto 5% auto;
   width: 80%;
 }
 .blog-Img-con {
@@ -72,6 +72,7 @@
   font-size: 12Px;
   text-decoration: none;
   display: flex;
+  margin-bottom: 7rem;
   align-items: center;
   gap: .7rem;
 }
@@ -172,7 +173,7 @@
   }
   .blog-Img-con {
     width: 85%;
-    margin: 0% auto;    
+    margin: 6% auto;    
   }
   .text {
     width: 100%;
@@ -184,6 +185,7 @@
     line-height: 40px;
     letter-spacing: 0.01em;
   }
+ 
   .para {
     margin-top: 2rem;
   }
