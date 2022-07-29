@@ -14,10 +14,18 @@ body{
 .search-box{
     display: flex;
     gap: 1.5rem;
+    align-items: center;
+}
+.dropDownState{
+    align-items: start;
+}
+.dropDownState .searchBtn{
+    margin-top: 0;
 }
 .searchBtn{
     display: flex;
     gap: 1rem ;
+    margin-top: .5rem;
 }
 .discover-Btn{
     height: 20px;
@@ -67,8 +75,8 @@ body{
     background-color: #fff;
     border-radius: 3px;
     font-size: 1rem;
+    color: #000;
 }
-
 .Flex2{
     display:flex;
     justify-content: space-between;

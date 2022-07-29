@@ -12,7 +12,7 @@
 .text {
   width: 50%;
   margin: 0 auto;
-  padding: 3rem 0 2rem 0;
+  padding: 0rem 0 2rem 0;
 }
 .text h1 {
   font-family: "Abhaya Libre", serif;
@@ -20,6 +20,7 @@
   font-weight: 400;
   line-height: 50px;
   letter-spacing: 0.01em;
+  margin-bottom: .7rem;
 }
 .story {
   font-family: "Inter";
@@ -28,15 +29,11 @@
   font-size: 18px;
   line-height: 25px;
   letter-spacing: 0.01em;
-  margin: 0.5rem 0
+  margin: 1rem 0
 }
-
 .bold {
   font-size: "50px";
   font-family: "Inter";
-}
-.story p {
-  margin: 2rem 0;
 }
 .secondaryImgCon {
   width: 40%;
@@ -74,7 +71,9 @@
   font-weight: bold;
   font-size: 12Px;
   text-decoration: none;
-  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  gap: .7rem;
 }
 .read-more-link:visited{
   color: #000;
@@ -86,6 +85,11 @@
   margin: 1.5rem 0;
   font-size: 2.3rem;
   font-weight: 700;
+}
+.share{
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
 .para h3 {
   margin: 1.5rem 0;
@@ -129,7 +133,7 @@
 .about:hover {
   cursor: pointer;
 }
-.fixedScroll{
+/* .fixedScroll{
   position: fixed;
   left: 0;
   right: 0;
@@ -137,8 +141,7 @@
   width: 100%;
   height: 20vh;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 28.65%, #FFFFFF 100%);
-
-}
+} */
 .fixedScrollToTop{
   position: fixed;
   bottom: 8%;
@@ -176,7 +179,7 @@
     padding: 1rem 2rem;
   }
   .text h1 {
-    font-size: 4rem;
+    font-size: 3.8rem;
     line-height: 40px;
     letter-spacing: 0.01em;
   }
@@ -188,7 +191,7 @@
   }
   .story {
     font-size: 16px;
-     margin: 1.6rem 0;
+     margin: 0rem 0 1.5rem 0;
   }
  
   .section {
@@ -212,6 +215,10 @@
     justify-content: space-between;
     padding: 2rem 2rem 1rem 2rem;
   }
+  /* .fixedScroll{
+    display: none;
+    background: transparent;
+  } */
 }
 @media  (min-width:576px) and (max-width:992px){
   .blog-Img-con {
