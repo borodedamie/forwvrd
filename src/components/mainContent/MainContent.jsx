@@ -184,6 +184,10 @@ const renderOptions = (links) => {
         return <p className='story'>{ children }</p>
       },
 
+      [ BLOCKS.HEADING_3 ]: (node, children) => {
+        return <h3 className='heading-three' style={{ fontSize: "20px", marginTop: "1rem", marginBottom: "1rem"}}>{ children }</h3>
+      },
+
       [INLINES.HYPERLINK]: ({ data }, children) => (
         <a
           href={data.uri}
