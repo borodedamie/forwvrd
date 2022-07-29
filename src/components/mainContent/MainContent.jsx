@@ -261,7 +261,7 @@ const renderOptions = (links) => {
         
         <div className="fixedFlex">
             <div className="fixedLeft">
-              <Link to="/about" reloadDocument="true"><h5 className="about">ABOUT</h5></Link>
+              <Link to="/about" reloadDocument="true"><h5 className="about" >ABOUT</h5></Link>
 
                 <div className="terms">
                     <p>Terms and Conditions <br /> Privacy Policy</p>

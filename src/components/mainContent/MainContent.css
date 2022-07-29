@@ -130,7 +130,10 @@
   font-size: 1.2rem;
   font-weight: bold;
 }
-
+.about{
+  text-decoration: none;
+  color: #000;
+}
 .about:hover {
   cursor: pointer;
 }
