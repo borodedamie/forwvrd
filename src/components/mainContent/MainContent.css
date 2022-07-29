@@ -224,6 +224,9 @@
   } */
 }
 @media  (min-width:576px) and (max-width:992px){
+  .mainContent {
+    margin: 60px auto 0px auto;
+  }
   .blog-Img-con {
     width: 90%;
   }
