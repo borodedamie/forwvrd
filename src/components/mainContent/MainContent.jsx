@@ -1,7 +1,7 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
 import './MainContent.css'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import useContenful from '../../hooks/use-Contenful'
 import { FaGreaterThan, FaShareAlt } from 'react-icons/fa'
 import { GrClose } from 'react-icons/gr'
@@ -261,7 +261,7 @@ const renderOptions = (links) => {
         
         <div className="fixedFlex">
             <div className="fixedLeft">
-                <h5 onClick={ () => navigate('about') } className="about">ABOUT</h5>
+              <Link to="/about" reloadDocument="true"><h5 className="about">ABOUT</h5></Link>
 
                 <div className="terms">
                     <p>Terms and Conditions <br /> Privacy Policy</p>
