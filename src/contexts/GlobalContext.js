@@ -3,12 +3,11 @@ import React, { createContext, useState } from 'react'
 export const GlobalContext = createContext({})
 
 export const GlobalProvider = ({ children }) => {
-    // const search_result = localStorage.getItem('search_char')
-
     const [ search, setSearch ] = useState("")
+    const [ aboutPage, setAboutPage ] = useState(false)
 
     return (
-        <GlobalContext.Provider value={{ search, setSearch, }} >
+        <GlobalContext.Provider value={{ search, setSearch, aboutPage, setAboutPage }} >
             { children }
         </GlobalContext.Provider>
     )

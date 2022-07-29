@@ -7,6 +7,7 @@ import { FaGreaterThan, FaShareAlt } from 'react-icons/fa'
 import { GrClose } from 'react-icons/gr'
 import {  AiOutlineUp } from 'react-icons/ai'
 import { useState, useContext } from 'react'
+import AboutContent from '../aboutContent/AboutContent';
 
 import { GlobalContext } from "../../contexts/GlobalContext"
 
@@ -60,7 +61,7 @@ query {
 `;
 
 function MainContent() {
-const { search } = useContext(GlobalContext)
+const { search, aboutPage, setAboutPage } = useContext(GlobalContext)
   
 const navigate = useNavigate();
 
@@ -209,7 +210,7 @@ const renderOptions = (links) => {
 
   return (
     <div className='mainContent'>
-        { storyCollection?.items.filter((item) => {
+        { !aboutPage && storyCollection?.items.filter((item) => {
           if (search === "") {
             return item
           } else if (item?.title.toLowerCase().includes(search.toLowerCase())) {
@@ -253,6 +254,8 @@ const renderOptions = (links) => {
         </div>          
         ))}
 
+        {/* { aboutPage && <AboutContent /> } */}
+
         <div className="fixedScroll" style={{display: visibleBtn ? 'block' : 'none'}}>
             <div className="discover-Btn fixedScrollToTop" onClick={scrollToTop}  >
               <AiOutlineUp onClick={scrollToTop} style={{color:'#fff', cursor:'pointer',fontSize: '1.6rem'}}/>
@@ -262,6 +265,7 @@ const renderOptions = (links) => {
         <div className="fixedFlex">
             <div className="fixedLeft">
               <Link to="/about" reloadDocument="true"><h5 className="about">ABOUT</h5></Link>
+              {/* <h5 onClick={ () => setAboutPage(true) } className='about'>ABOUT</h5> */}
 
                 <div className="terms">
                     <p>Terms and Conditions <br /> Privacy Policy</p>
