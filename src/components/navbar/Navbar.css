@@ -74,7 +74,7 @@ body{
     border: 1px solid #000;
     background-color: #fff;
     border-radius: 3px;
-    font-size: 1rem;
+    font-size: .9rem;
     color: #000;
 }
 .Flex2{
@@ -92,13 +92,17 @@ body{
 .recent:hover {
     cursor: pointer;
 }
-@media  (max-width:768px) {
+
+
+@media  (max-width:576px) {
     .btnFlex{
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: repeat( auto-fit, minmax(85px, 1fr));
         margin-top: 0rem;
+        gap: 1rem;
+
     }
     .dropDownState{
-        margin-bottom: 11rem;
+        margin-bottom: 13rem;
     }
     .header{
         position: relative;
@@ -112,6 +116,7 @@ body{
      position: absolute;
      left: 0;
      right: 0;
+     width: auto;
      top:60px;
      padding-bottom: 3rem;
      padding: 2rem ;
@@ -120,3 +125,12 @@ body{
         width: 120px;
     }
 }
+/* @media (max-width:345px) and  (min-width:375px){
+    .btnFlex{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin-top: 1rem;
+        gap: 1rem;  
+        border-color: red;
+    }
+} */
