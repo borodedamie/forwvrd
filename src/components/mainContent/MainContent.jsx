@@ -1,20 +1,21 @@
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types'
 import './MainContent.css'
-import { useNavigate, Link } from 'react-router-dom'
-import useContenful from '../../hooks/use-Contenful'
+import { Link } from 'react-router-dom'
 import { FaGreaterThan, FaShareAlt } from 'react-icons/fa'
 import { GrClose } from 'react-icons/gr'
 import {  AiOutlineUp } from 'react-icons/ai'
 import { useState, useContext } from 'react'
-import AboutContent from '../aboutContent/AboutContent';
 
 import { GlobalContext } from "../../contexts/GlobalContext"
+import { useQuery, gql } from '@apollo/client';
 
+const PAGE_SIZE = 3
 
-const GET_STORIES = `
-query {
-  storyCollection(limit: 10) {
+const GET_STORIES = gql`
+query GetStories($limit: Int!, $skip: Int!) {
+  storyCollection(limit: $limit, skip: $skip) {
+    total
     items {
       sys {
         id
@@ -61,50 +62,47 @@ query {
 `;
 
 function MainContent() {
-const { search, aboutPage, setAboutPage } = useContext(GlobalContext)
+
+  const { search } = useContext(GlobalContext)
   
-const navigate = useNavigate();
-
-let { data, errors } = useContenful(GET_STORIES)
-
-const { storyCollection } = data
-
-const [visibleBtn , setVisibleBtn] = useState(false)
-
-// scroll functionality
-const makeBtnVisible = () => {
- const scrolled = document.documentElement.scrollTop;
-  if(scrolled > 500){
-      setVisibleBtn(true)
+  const [ page, setPage] = useState(0)
+  
+  const { loading, error, data } = useQuery(GET_STORIES, { variables: { limit: PAGE_SIZE, skip: page * PAGE_SIZE }});
+  
+  const [visibleBtn , setVisibleBtn] = useState(false)
+  
+  // scroll functionality
+  const makeBtnVisible = () => {
+   const scrolled = document.documentElement.scrollTop;
+    if(scrolled > 500){
+        setVisibleBtn(true)
+    }
+    else if (scrolled <= 500){
+      setVisibleBtn(false)
+    }
   }
-  else if (scrolled <= 500){
-    setVisibleBtn(false)
-  }
-}
-
-const scrollToTop = () =>{
-  window.scrollTo({
-    top: 0, 
-    behavior: 'smooth'
-
-  });
-};
-
-window.addEventListener('scroll', makeBtnVisible);
-
-const [ newItems, setNewItems ] = useState({})
-
-const toggleHandler = (id) => {
-  setNewItems((txt) => ({
-    ...txt,
-    [id]: !txt[id],
-  }));
-};
-
-if(errors)
-	return <span>{errors.map((error) => error.message).join(",")}</span>
-
-if(!storyCollection) return <span>Loading...</span>
+  
+  // const scrollToTop = () =>{
+  //   window.scrollTo({
+  //     top: 0, 
+  //     behavior: 'smooth'
+  
+  //   });
+  // };
+  
+  window.addEventListener('scroll', makeBtnVisible);
+  
+  const [ newItems, setNewItems ] = useState({})
+  
+  const toggleHandler = (id) => {
+    setNewItems((txt) => ({
+      ...txt,
+      [id]: !txt[id],
+    }));
+  };
+  
+  if (loading) return <span>Loading...</span>;
+  if (error) return <span>Error : {error.message}</span>;  
 
 // convert sys.publishedAt to DateString
 const convertDate = (str) => {
@@ -210,7 +208,7 @@ const renderOptions = (links) => {
 
   return (
     <div className='mainContent'>
-        { !aboutPage && storyCollection?.items.filter((item) => {
+        { data.storyCollection?.items.filter((item) => {
           if (search === "") {
             return item
           } else if (item?.title.toLowerCase().includes(search.toLowerCase())) {
@@ -254,11 +252,9 @@ const renderOptions = (links) => {
         </div>          
         ))}
 
-        {/* { aboutPage && <AboutContent /> } */}
-
         <div className="fixedScroll" style={{display: visibleBtn ? 'block' : 'none'}}>
-            <div className="discover-Btn fixedScrollToTop" onClick={scrollToTop}  >
-              <AiOutlineUp onClick={scrollToTop} style={{color:'#fff', cursor:'pointer',fontSize: '1.6rem'}}/>
+            <div className="discover-Btn fixedScrollToTop" >
+              <AiOutlineUp onClick={ () => setPage((prev) => prev + 1)} style={{color:'#fff', cursor:'pointer',fontSize: '1.6rem'}}/>
             </div> 
         </div>
         

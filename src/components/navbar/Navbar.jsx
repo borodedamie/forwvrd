@@ -1,5 +1,4 @@
 import { useState, useContext } from "react";
-import useContenful from '../../hooks/use-Contenful'
 
 import { FaGreaterThan } from 'react-icons/fa'
 import { AiOutlineSearch, AiOutlineUp } from 'react-icons/ai'
@@ -9,8 +8,9 @@ import { Link } from 'react-router-dom'
 import './Navbar.css'
 import { GlobalContext } from "../../contexts/GlobalContext";
 
+import { useQuery, gql } from '@apollo/client';
 
-const GET_CATEGORIES = `
+const GET_CATEGORIES = gql`
 query {
     categoryCollection(limit: 10) {
       items {
@@ -24,18 +24,13 @@ query {
 `;
 
 function Navbar() {
+const { loading, error, data } = useQuery(GET_CATEGORIES);
+
 const { search, setSearch } = useContext(GlobalContext)
-
 const [ displaySearch, setDisplaySearch ] = useState(false)
-
-let { data, errors } = useContenful(GET_CATEGORIES)
-
-const { categoryCollection } = data
-
-if(errors)
-	return <span>{errors.map((error) => error.message).join(",")}</span>
-
-if(!data) console.log('loading...')
+    
+if (loading) return console.log('Loading...');
+if (error) return <span>Error : {error.message}</span>;
 
 // call function on the search button when the enter key is pressed
 const onEnter = (event) => {
@@ -100,7 +95,7 @@ const onEnter = (event) => {
 
                 <div className="search-options">
                     <div className="btnFlex" >
-                    { categoryCollection?.items.map((item) => (
+                    { data?.categoryCollection?.items.map((item) => (
                         <button onClick={ () => {
                             setSearch(item?.name)
                             } }    
