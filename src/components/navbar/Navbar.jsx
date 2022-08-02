@@ -26,7 +26,7 @@ query {
 function Navbar() {
 const { loading, error, data } = useQuery(GET_CATEGORIES);
 
-const { search, setSearch } = useContext(GlobalContext)
+const { search, setSearch, setAboutPage } = useContext(GlobalContext)
 const [ displaySearch, setDisplaySearch ] = useState(false)
     
 if (loading) return console.log('Loading...');
@@ -36,6 +36,7 @@ if (error) return <span>Error : {error.message}</span>;
 const onEnter = (event) => {
     if(event.charCode === 13) {
         setDisplaySearch(false)
+        setAboutPage(false)
     }
 }
 
@@ -98,6 +99,7 @@ const onEnter = (event) => {
                     { data?.categoryCollection?.items.map((item) => (
                         <button onClick={ () => {
                             setSearch(item?.name)
+                            setAboutPage(false)
                             } }    
                             key={ item.sys.id }>{ item?.name.toUpperCase() }</button>
                     )) }

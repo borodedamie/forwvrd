@@ -7,15 +7,18 @@ import { GrClose } from 'react-icons/gr'
 import {  AiOutlineUp } from 'react-icons/ai'
 import { useState, useContext } from 'react'
 
+import { Waypoint } from 'react-waypoint'
+
+import AboutContent from '../aboutContent/AboutContent'
+
 import { GlobalContext } from "../../contexts/GlobalContext"
 import { useQuery, gql } from '@apollo/client';
 
 const PAGE_SIZE = 3
 
 const GET_STORIES = gql`
-query GetStories($limit: Int!, $skip: Int!) {
+query GetStories($limit: Int, $skip: Int) {
   storyCollection(limit: $limit, skip: $skip) {
-    total
     items {
       sys {
         id
@@ -63,11 +66,11 @@ query GetStories($limit: Int!, $skip: Int!) {
 
 function MainContent() {
 
-  const { search } = useContext(GlobalContext)
+  const { search, aboutPage, setAboutPage } = useContext(GlobalContext)
   
-  const [ page, setPage] = useState(0)
-  
-  const { loading, error, data } = useQuery(GET_STORIES, { variables: { limit: PAGE_SIZE, skip: page * PAGE_SIZE }});
+  const { loading, error, data, fetchMore } = useQuery(GET_STORIES, { variables: { limit: PAGE_SIZE, skip: 0 }})
+
+  // console.log(data.storyCollection.items.length)
   
   const [visibleBtn , setVisibleBtn] = useState(false)
   
@@ -208,7 +211,7 @@ const renderOptions = (links) => {
 
   return (
     <div className='mainContent'>
-        { data.storyCollection?.items.filter((item) => {
+        { !aboutPage && data?.storyCollection.items.filter((item) => {
           if (search === "") {
             return item
           } else if (item?.title.toLowerCase().includes(search.toLowerCase())) {
@@ -252,16 +255,41 @@ const renderOptions = (links) => {
         </div>          
         ))}
 
+        { !aboutPage && <Waypoint onEnter={ () => fetchMore({ 
+                variables: { skip: data.storyCollection.items.length }, 
+                updateQuery: ( prev, { fetchMoreResult }) => {
+                  if(!fetchMoreResult) return prev;
+                  return Object.assign({}, prev, {
+                    storyCollection: {
+                      items: [ ...prev.storyCollection.items, ...fetchMoreResult.storyCollection.items ]
+                    }
+                  });
+                }
+              })}/> }
+
+        { aboutPage && <AboutContent /> }
+
         <div className="fixedScroll" style={{display: visibleBtn ? 'block' : 'none'}}>
             <div className="discover-Btn fixedScrollToTop" >
-              <AiOutlineUp onClick={ () => setPage((prev) => prev + 1)} style={{color:'#fff', cursor:'pointer',fontSize: '1.6rem'}}/>
+              <AiOutlineUp onClick={ () => fetchMore({ 
+                variables: { skip: data.storyCollection.items.length }, 
+                updateQuery: ( prev, { fetchMoreResult }) => {
+                  if(!fetchMoreResult) return prev;
+                  return Object.assign({}, prev, {
+                    storyCollection: {
+                      items: [ ...prev.storyCollection.items, ...fetchMoreResult.storyCollection.items ]
+                    }
+                  });
+                }
+              }) } 
+                style={{color:'#fff', cursor:'pointer',fontSize: '1.6rem'}}/>
             </div> 
         </div>
         
         <div className="fixedFlex">
             <div className="fixedLeft">
-              <Link to="/about" reloadDocument="true"><h5 className="about">ABOUT</h5></Link>
-              {/* <h5 onClick={ () => setAboutPage(true) } className='about'>ABOUT</h5> */}
+              {/* <Link to="/about" reloadDocument="true"><h5 className="about">ABOUT</h5></Link> */}
+              <h5 onClick={ () => setAboutPage(true) } className='about'>ABOUT</h5>
 
                 <div className="terms">
                     <p>Terms and Conditions <br /> Privacy Policy</p>

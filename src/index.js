@@ -4,6 +4,7 @@ import App from './App';
 import './index.css';
 
 import { ApolloClient, InMemoryCache, createHttpLink, ApolloProvider } from '@apollo/client';
+// import { offsetLimitPagination } from "@apollo/client/utilities";
 import { setContext } from '@apollo/client/link/context';
 
 const httpLink = createHttpLink({
@@ -22,7 +23,20 @@ const authLink = setContext((_, { headers }) => {
 
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
-  cache: new InMemoryCache()
+  // cache: new InMemoryCache()
+  cache: new InMemoryCache({
+    typePolicies: {
+        StoryCollection: {
+            fields: {
+              items: {
+                merge(existing = [], incoming) {
+                  return  [...existing, ...incoming ];
+                }
+              }
+            }
+        }
+    }
+  })
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
