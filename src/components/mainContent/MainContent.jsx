@@ -17,8 +17,8 @@ import { useQuery, gql } from '@apollo/client';
 const PAGE_SIZE = 3
 
 const GET_STORIES = gql`
-query GetStories($limit: Int, $skip: Int) {
-  storyCollection(limit: $limit, skip: $skip) {
+query GetStories( $limit: Int!, $skip: Int ) {
+  storyCollection( limit: $limit, skip: $skip ) {
     items {
       sys {
         id
@@ -64,15 +64,28 @@ query GetStories($limit: Int, $skip: Int) {
 }
 `;
 
+// const views = []
+
 function MainContent() {
 
   const { search, aboutPage, setAboutPage } = useContext(GlobalContext)
   
-  const { loading, error, data, fetchMore } = useQuery(GET_STORIES, { variables: { limit: PAGE_SIZE, skip: 0 }})
+  const { loading, error, data, fetchMore, refetch } = useQuery(GET_STORIES, { variables: { limit: PAGE_SIZE, skip: 0 }})
 
   // console.log(data.storyCollection.items.length)
   
   const [visibleBtn , setVisibleBtn] = useState(false)
+
+  // const [ clicks, setClicks ] = useState({
+  //   storyId: "",
+  //   clicks: 0
+  // })
+
+  // const pushClicks = (arr, id, click) => {
+  //   for(let i = 0; i < arr.length; i++) {
+  //     if()
+  //   }
+  // }
   
   // scroll functionality
   const makeBtnVisible = () => {
@@ -115,15 +128,14 @@ const convertDate = (str) => {
 }
 
 // share story using the Web Share API
-const share = async () => {
+const share = async (id) => {
   const shareData = {
     title: document.title,
-    url: window.location.href
+    url: window.location.href + `story/${id}`
   }
 
   try {
     await navigator.share(shareData)
-    console.log('shared successfully')
   } catch(err) {
     console.log(`Error: ${err}`)
   }
@@ -210,6 +222,7 @@ const renderOptions = (links) => {
 }
 
   return (
+    <>
     <div className='mainContent'>
         { !aboutPage && data?.storyCollection.items.filter((item) => {
           if (search === "") {
@@ -232,7 +245,7 @@ const renderOptions = (links) => {
             </div>
 
             <div className="blog-Img-con">
-                <img src={ item?.cover.url } alt=""  className='blog-img'/>
+                <img src={ item?.cover.url } alt="story-img"  className='blog-img'/>
             </div>
 
             <div className='text'>
@@ -246,7 +259,7 @@ const renderOptions = (links) => {
                   { documentToReactComponents( item?.story.json, renderOptions(item?.story.links) )}    
                 </div>
                 <div className='text share'>
-                 <span onClick={ share } className='read-more-link'>Share <FaShareAlt /></span>
+                 <span onClick={ () => share( item?.sys.id ) } className='read-more-link'>Share <FaShareAlt /></span>
                  <span onClick={ () => toggleHandler(i) } className='read-more-link'>Close <GrClose /></span>
                </div>
               </>
@@ -265,7 +278,8 @@ const renderOptions = (links) => {
                     }
                   });
                 }
-              })}/> }
+              })}/> 
+        }
 
         { aboutPage && <AboutContent /> }
 
@@ -304,6 +318,7 @@ const renderOptions = (links) => {
             </div>
         </div>
   </div>
+  </>
   )
 }
 
