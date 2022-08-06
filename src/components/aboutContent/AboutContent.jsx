@@ -104,7 +104,7 @@ const handleSubmit = (e) => {
             </div>
 
 
-            <div className="fixedFlex">
+            {/* <div className="fixedFlex">
             <div className="fixedLeft">
                 <h5 onClick={ () => navigate('/about') } className="about">ABOUT</h5>
 
@@ -119,7 +119,7 @@ const handleSubmit = (e) => {
                     <p>IG</p>
                 </div>
             </div>
-        </div>
+        </div> */}
         </div>
     )
 }

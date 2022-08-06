@@ -1,7 +1,7 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types'
 import './MainContent.css'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { FaGreaterThan, FaShareAlt } from 'react-icons/fa'
 import { GrClose } from 'react-icons/gr'
 import {  AiOutlineUp } from 'react-icons/ai'
@@ -116,8 +116,10 @@ function MainContent() {
       [id]: !txt[id],
     }));
   };
-  
+ 
+  // prints loading on the page until data is fetched from the DB
   if (loading) return <span>Loading...</span>;
+
   if (error) return <span>Error : {error.message}</span>;  
 
 // convert sys.publishedAt to DateString
