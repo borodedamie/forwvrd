@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import { FaGreaterThan } from 'react-icons/fa'
 import { AiOutlineSearch, AiOutlineUp } from 'react-icons/ai'
 import logo from '../../images/logo.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import './Navbar.css'
 import { GlobalContext } from "../../contexts/GlobalContext";
@@ -28,6 +28,8 @@ const { loading, error, data } = useQuery(GET_CATEGORIES);
 
 const { search, setSearch, setAboutPage } = useContext(GlobalContext)
 const [ displaySearch, setDisplaySearch ] = useState(false)
+
+const navigate = useNavigate()
     
 if (loading) return console.log('Loading...');
 if (error) return <span>Error : {error.message}</span>;
@@ -98,8 +100,8 @@ const onEnter = (event) => {
                     <div className="btnFlex" >
                     { data?.categoryCollection?.items.map((item) => (
                         <button onClick={ () => {
-                            setSearch(item?.name)
-                            setAboutPage(false)
+                            // setAboutPage(false)
+                            navigate(`/category/${item.sys.id }`)
                             } }    
                             key={ item.sys.id }>{ item?.name.toUpperCase() }</button>
                     )) }

@@ -56,9 +56,7 @@ query GetStories( $limit: Int!, $skip: Int ) {
           }
         }
       }
-      category {
-        name
-      }
+
     }
   }
 }
@@ -235,9 +233,11 @@ const renderOptions = (links) => {
             return item
           } else if (item?.introduction.toLowerCase().includes(search.toLowerCase())) {
             return item
-          } else if (item?.category.name.toLowerCase().includes(search.toLowerCase())) {
-            return item
-          }
+          } 
+          // else if (item?.category.name.toLowerCase().includes(search.toLowerCase())) {
+          //   console.log(item)
+          //   return item
+          // }
           return false
         }).map((item, i) => (
         <div key={ item?.sys.id }>

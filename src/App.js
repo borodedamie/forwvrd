@@ -2,15 +2,17 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import About from './pages/About'
 import Story from './pages/Story'
+import Category from './pages/Category'
 
 function App() {
   return (
     <>
       <Router>
           <Routes>
-            <Route path='/' element={ <Home />} />
+            <Route path='/' element={ <Home /> } />
             <Route path='/story/:id' element={ <Story /> } />
-            <Route path='about' element={ <About />} />
+            <Route path='about' element={ <About /> } />
+            <Route path='/category/:categoryId' element={  <Category /> }/>
           </Routes>
       </Router>
     </>

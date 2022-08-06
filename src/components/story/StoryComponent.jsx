@@ -59,7 +59,6 @@ const convertDate = (str) => {
   return date.toDateString()
 }
 
-console.log(data)
 
 const renderOptions = (links) => {
   // create an asset map 
