@@ -1,7 +1,8 @@
 import { FaGreaterThan } from 'react-icons/fa'
 import aboutImg from '../../images/forward-about.png'
 import './AboutContent.css'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate , Link} from 'react-router-dom'
+
 
 function AboutContent() {
 const navigate = useNavigate();
@@ -104,9 +105,10 @@ const handleSubmit = (e) => {
             </div>
 
 
-            {/* <div className="fixedFlex">
+            <div className="fixedFlex">
             <div className="fixedLeft">
-                <h5 onClick={ () => navigate('/about') } className="about">ABOUT</h5>
+              <Link to="/about" reloadDocument="true"><h5 className="about">ABOUT</h5></Link>
+              {/* <h5 onClick={ () => setAboutPage(true) } className='about'>ABOUT</h5> */}
 
                 <div className="terms">
                     <p>Terms and Conditions <br /> Privacy Policy</p>
@@ -119,7 +121,7 @@ const handleSubmit = (e) => {
                     <p>IG</p>
                 </div>
             </div>
-        </div> */}
+        </div>
         </div>
     )
 }

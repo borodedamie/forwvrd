@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom'
 import { Waypoint } from 'react-waypoint'
 
 import { useState, useContext } from 'react'
+import LoadingSpinner from '../loadingSpinner/LoadingSpinner'
 
 const PAGE_SIZE = 3
 
@@ -67,6 +68,7 @@ query GetCategoryStory ($limit: Int!, $skip: Int){
 const { loading, error, data, fetchMore } = useQuery(GET_CATEGORY_STORIES, { variables: { limit: PAGE_SIZE, skip: 0 }})
 
 const [visibleBtn , setVisibleBtn] = useState(false)
+
 
 // console.log(data.category.storiesCollection.items.length )
 
@@ -176,7 +178,7 @@ window.addEventListener('scroll', makeBtnVisible);
     }
   }
 
-if (loading) return <p>Loading...</p>;
+if (loading) return <LoadingSpinner />;
 if (error) return <span>Error : {error.message}</span>; 
   
 

@@ -2,6 +2,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { useParams } from 'react-router-dom'
 import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types'
 import { useQuery, gql } from '@apollo/client'
+import LoadingSpinner from '../loadingSpinner/LoadingSpinner'
 
 function Story() {
 const { id } = useParams()
@@ -49,7 +50,8 @@ query {
 
 const { loading, error, data } = useQuery(GET_STORY)
 
-if (loading) return <p>Loading...</p>;
+// if (loading) return <p>Loading...</p>;
+if (loading) return <LoadingSpinner/>;
 if (error) return <span>Error : {error.message}</span>; 
 
 // convert sys.publishedAt to DateString
