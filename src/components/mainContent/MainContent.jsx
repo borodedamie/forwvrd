@@ -11,6 +11,7 @@ import { Waypoint } from 'react-waypoint'
 
 import { GlobalContext } from "../../contexts/GlobalContext"
 import { useQuery, gql } from '@apollo/client';
+import LoadingSpinner from '../loadingSpinner/LoadingSpinner'
 
 const PAGE_SIZE = 3
 
@@ -114,7 +115,7 @@ function MainContent() {
   };
  
   // prints loading on the page until data is fetched from the DB
-  if (loading) return <span>Loading...</span>;
+  if (loading) return <LoadingSpinner/>;
 
   if (error) return <span>Error : {error.message}</span>;  
 
@@ -197,7 +198,7 @@ const renderOptions = (links) => {
       },
 
       [ BLOCKS.HEADING_3 ]: (node, children) => {
-        return <h3 className='heading-three' style={{ fontSize: "20px", marginTop: "1rem", marginBottom: "1rem"}}>{ children }</h3>
+        return <h3 className='heading-three' style={{ fontSize: "20px", marginTop: "2.5rem", marginBottom: "1.5rem"}}>{ children }</h3>
       },
 
       [INLINES.HYPERLINK]: ({ data }, children) => (

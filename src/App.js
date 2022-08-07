@@ -3,6 +3,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Story from './pages/Story'
 import Category from './pages/Category'
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

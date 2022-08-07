@@ -39,6 +39,7 @@ body{
 }
 .search-wrapper{
     display: flex;
+    justify-content: space-between;
 }
 .searchCon{
     display: flex;
@@ -102,7 +103,7 @@ body{
 
     }
     .dropDownState{
-        margin-bottom: 13rem;
+        margin-bottom: 15rem;
     }
     .header{
         position: relative;
