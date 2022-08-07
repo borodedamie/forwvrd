@@ -2,8 +2,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr 2fr;
   gap: 3.5rem;
-  /* padding: 8rem 2rem 2rem; */
-  margin-left:-11rem;
+  padding: 8rem 2rem 2rem;
+  /* margin-left:-11rem; */
 }
 .aboutImg {
   width: 85%;

@@ -1,15 +1,13 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types'
 import './MainContent.css'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { FaGreaterThan, FaShareAlt } from 'react-icons/fa'
 import { GrClose } from 'react-icons/gr'
 import {  AiOutlineUp } from 'react-icons/ai'
 import { useState, useContext } from 'react'
 
 import { Waypoint } from 'react-waypoint'
-
-import AboutContent from '../aboutContent/AboutContent'
 
 import { GlobalContext } from "../../contexts/GlobalContext"
 import { useQuery, gql } from '@apollo/client';
@@ -66,7 +64,7 @@ query GetStories( $limit: Int!, $skip: Int ) {
 
 function MainContent() {
 
-  const { search, aboutPage, setAboutPage } = useContext(GlobalContext)
+  const { search } = useContext(GlobalContext)
   
   const { loading, error, data, fetchMore, refetch } = useQuery(GET_STORIES, { variables: { limit: PAGE_SIZE, skip: 0 }})
 
@@ -224,7 +222,7 @@ const renderOptions = (links) => {
   return (
     <>
     <div className='mainContent'>
-        { !aboutPage && data?.storyCollection.items.filter((item) => {
+        { data?.storyCollection.items.filter((item) => {
           if (search === "") {
             return item
           } else if (item?.title.toLowerCase().includes(search.toLowerCase())) {
@@ -270,7 +268,7 @@ const renderOptions = (links) => {
         </div>          
         ))}
 
-        { !aboutPage && <Waypoint onEnter={ () => fetchMore({ 
+        <Waypoint onEnter={ () => fetchMore({ 
                 variables: { skip: data.storyCollection.items.length }, 
                 updateQuery: ( prev, { fetchMoreResult }) => {
                   if(!fetchMoreResult) return prev;
@@ -281,9 +279,6 @@ const renderOptions = (links) => {
                   });
                 }
               })}/> 
-        }
-
-        { aboutPage && <AboutContent /> }
 
         <div className="fixedScroll" style={{display: visibleBtn ? 'block' : 'none'}}>
             <div className="discover-Btn fixedScrollToTop" >
@@ -304,8 +299,8 @@ const renderOptions = (links) => {
         
         <div className="fixedFlex">
             <div className="fixedLeft">
-              {/* <Link to="/about" reloadDocument="true"><h5 className="about">ABOUT</h5></Link> */}
-              <h5 onClick={ () => setAboutPage(true) } className='about'>ABOUT</h5>
+              <Link to="/about" reloadDocument="true"><h5 className="about">ABOUT</h5></Link>
+              {/* <h5 onClick={ () => setAboutPage(true) } className='about'>ABOUT</h5> */}
 
                 <div className="terms">
                     <p>Terms and Conditions <br /> Privacy Policy</p>

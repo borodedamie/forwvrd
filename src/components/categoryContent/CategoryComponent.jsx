@@ -2,14 +2,26 @@ import { useParams } from 'react-router-dom'
 import { useQuery, gql } from '@apollo/client'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types'
+import '../mainContent/MainContent.css'
+import { FaGreaterThan, FaShareAlt } from 'react-icons/fa'
+import { GrClose } from 'react-icons/gr'
+import {  AiOutlineUp } from 'react-icons/ai'
+
+import { Link } from 'react-router-dom'
+
+import { Waypoint } from 'react-waypoint'
+
+import { useState, useContext } from 'react'
+
+const PAGE_SIZE = 3
 
 function CategoryComponent() {
 const { categoryId } = useParams()
 
 const GET_CATEGORY_STORIES = gql`
-query {
+query GetCategoryStory ($limit: Int!, $skip: Int){
     category(id: "${categoryId}") {
-      storiesCollection( limit: 3, skip: 0 ) {
+      storiesCollection( limit: $limit, skip: $skip ) {
         items {
             sys{
                 id
@@ -52,17 +64,55 @@ query {
   }
 `;
 
-const { loading, error, data } = useQuery(GET_CATEGORY_STORIES)
+const { loading, error, data, fetchMore } = useQuery(GET_CATEGORY_STORIES, { variables: { limit: PAGE_SIZE, skip: 0 }})
 
-if (loading) return <p>Loading...</p>;
-if (error) return <span>Error : {error.message}</span>; 
+const [visibleBtn , setVisibleBtn] = useState(false)
+
+// console.log(data.category.storiesCollection.items.length )
 
 // convert sys.publishedAt to DateString
 const convertDate = (str) => {
     let date = new Date(str);
   
     return date.toDateString()
+}
+
+// share story using the Web Share API
+const share = async (id) => {
+    const shareData = {
+      title: document.title,
+      url: `http://localhost:3000/story/${id}`
+    }
+  
+    try {
+      await navigator.share(shareData)
+    } catch(err) {
+      console.log(`Error: ${err}`)
+    }
   }
+
+const [ newItems, setNewItems ] = useState({})
+  
+const toggleHandler = (id) => {
+    setNewItems((txt) => ({
+      ...txt,
+      [id]: !txt[id],
+    }));
+};
+
+ // scroll functionality
+ const makeBtnVisible = () => {
+    const scrolled = document.documentElement.scrollTop;
+     if(scrolled > 500){
+         setVisibleBtn(true)
+     }
+     else if (scrolled <= 500){
+       setVisibleBtn(false)
+     }
+   }
+
+window.addEventListener('scroll', makeBtnVisible);
+
 
   const renderOptions = (links) => {
     // create an asset map 
@@ -88,11 +138,11 @@ const convertDate = (str) => {
       },
       renderNode: {
         [ BLOCKS.PARAGRAPH ]: (node, children) => {
-          return <p>{ children }</p>
+          return <p className='story'>{ children }</p>
         },
   
         [ BLOCKS.HEADING_3 ]: (node, children) => {
-          return <h3>{ children }</h3>
+            return <h3 className='heading-three' style={{ fontSize: "20px", marginTop: "1rem", marginBottom: "1rem"}}>{ children }</h3>
         },
   
         [INLINES.HYPERLINK]: ({ data }, children) => (
@@ -117,35 +167,86 @@ const convertDate = (str) => {
           const asset = assetMap.get( node.data.target.sys.id );
   
           return (
-            <div>
-              <img src={ asset.url } alt="asset-img"/>
+            <div className='secondaryImgCon'>
+              <img src={ asset.url } alt="asset-img" className='secondaryImg' />
             </div>
           )
         }
       }
     }
   }
+
+if (loading) return <p>Loading...</p>;
+if (error) return <span>Error : {error.message}</span>; 
   
 
   return (
     <>
         { data.category.storiesCollection.items.map((item, i) => (
-            <div>
-                <div key={ item?.sys.id }>
+            <div className='mainContent' key={ item?.sys.id }>
+                <div className='text'>
                     <h1>{ item.title }</h1>
-                    <p>{ item?.author.name } . { convertDate( item?.sys.firstPublishedAt )} </p>
+                    <p className='editor-name'>{ item?.author.name } . { convertDate( item?.sys.firstPublishedAt )} </p>
                 </div>
-                <div>
-                    <img src={ item?.cover.url } alt="story-img" />
+                <div className='blog-Img-con'>
+                    <img src={ item?.cover.url } alt="story-img" className='blog-img' />
                 </div>
-                <div>
-                    <p>{ item?.introduction }</p>
+                <div className='text'>
+                    <p className='story'>{ item?.introduction }</p>
+                    { !newItems[i] ? <div><span onClick={ () => toggleHandler(i) } className='read-more-link'><strong>Read more </strong> <FaGreaterThan /></span></div> : "" }
                 </div>
-                <div>
-                    { documentToReactComponents( item?.story.json, renderOptions(item?.story.links) ) }
-                </div>
+
+                { newItems[i] &&
+                    <>
+                        <div className='text'>
+                            { documentToReactComponents( item?.story.json, renderOptions(item?.story.links) ) }
+                        </div>
+                        <div className='text share'>
+                            <span onClick={ () => share( item?.sys.id ) } className='read-more-link'>Share <FaShareAlt /></span>
+                            <span onClick={ () => toggleHandler(i) } className='read-more-link'>Close <GrClose /></span>
+                        </div>
+                    </>
+                }
+            
             </div>
         )) }
+
+        <div className='fixedScroll' style={{display: visibleBtn ? 'block' : 'none'}}>
+            <div className="discover-Btn fixedScrollToTop">
+                <AiOutlineUp onClick={ () => fetchMore({
+                    variables: { skip: data.category.storiesCollection.items.length },
+                    updateQuery: ( prev, { fetchMoreResult }) => {
+                        if(!fetchMoreResult) return prev;
+                        console.log(prev)
+                        // return Object.assign({}, prev, {
+                        //     category: {
+                        //         storiesCollection: {
+                        //             items: [ ...prev.storiesCollection.items, fetchMoreResult.storiesCollection.items ]
+                        //         }
+                        //     }
+                        // });
+                    }
+                })}
+                style={{color:'#fff', cursor:'pointer',fontSize: '1.6rem'}}/>
+            </div>
+        </div>
+
+        <div className="fixedFlex">
+            <div className="fixedLeft">
+              <Link to="/about" reloadDocument="true"><h5 className="about">ABOUT</h5></Link>
+
+                <div className="terms">
+                    <p>Terms and Conditions <br /> Privacy Policy</p>
+              </div>
+            </div>
+
+            <div className="fixedRight">
+                <div className="social-links">
+                    <p>T</p>
+                    <p>IG</p>
+                </div>
+            </div>
+        </div>
     </>
   )
 }

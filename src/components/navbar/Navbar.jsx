@@ -44,7 +44,7 @@ const onEnter = (event) => {
 
     return (
         <div className='header'>
-            <Link to="/" reloadDocument="true">
+            <Link to="/">
                 <div className="logo">
                     <img src={logo} alt="" style={{ width: '100px' }} />
                 </div>
