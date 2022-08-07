@@ -213,20 +213,33 @@ if (error) return <span>Error : {error.message}</span>;
             </div>
         )) }
 
+            <Waypoint onEnter={ () => fetchMore({ 
+                variables: { skip: data.category.storiesCollection.items.length }, 
+                updateQuery: ( prev, { fetchMoreResult }) => {
+                    if(!fetchMoreResult) return prev;
+                    return Object.assign({}, prev, {
+                        category: {
+                            storiesCollection: {
+                                items: [ ...prev.category.storiesCollection.items, ...fetchMoreResult.category.storiesCollection.items ]
+                            }
+                        }
+                    });
+                }
+              })}/> 
+
         <div className='fixedScroll' style={{display: visibleBtn ? 'block' : 'none'}}>
             <div className="discover-Btn fixedScrollToTop">
                 <AiOutlineUp onClick={ () => fetchMore({
                     variables: { skip: data.category.storiesCollection.items.length },
                     updateQuery: ( prev, { fetchMoreResult }) => {
                         if(!fetchMoreResult) return prev;
-                        console.log(prev)
-                        // return Object.assign({}, prev, {
-                        //     category: {
-                        //         storiesCollection: {
-                        //             items: [ ...prev.storiesCollection.items, fetchMoreResult.storiesCollection.items ]
-                        //         }
-                        //     }
-                        // });
+                        return Object.assign({}, prev, {
+                            category: {
+                                storiesCollection: {
+                                    items: [ ...prev.category.storiesCollection.items, ...fetchMoreResult.category.storiesCollection.items ]
+                                }
+                            }
+                        });
                     }
                 })}
                 style={{color:'#fff', cursor:'pointer',fontSize: '1.6rem'}}/>

@@ -35,15 +35,15 @@ const client = new ApolloClient({
               }
             }
         },
-        Category: {
-          storiesCollection: {
-              items: {
-                merge(existing = [], incoming) {
-                  return  [...existing, ...incoming ];
-                }
-              }
-          }
-        }
+        // Category: {
+        //     storiesCollection: {
+        //       items: {
+        //         merge(existing = [], incoming) {
+        //           return  [...existing, ...incoming ];
+        //         }
+        //       }
+        //   }
+        // }
     }
   })
 });
