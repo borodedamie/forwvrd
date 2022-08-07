@@ -7,6 +7,9 @@ import { GrClose } from 'react-icons/gr'
 import {  AiOutlineUp } from 'react-icons/ai'
 import { useState, useContext } from 'react'
 
+// Get FetchMore Network Status
+import { NetworkStatus } from '@apollo/client';
+
 import { Waypoint } from 'react-waypoint'
 
 import { GlobalContext } from "../../contexts/GlobalContext"
@@ -66,7 +69,7 @@ function MainContent() {
 
   const { search } = useContext(GlobalContext)
   
-  const { loading, error, data, fetchMore, refetch } = useQuery(GET_STORIES, { variables: { limit: PAGE_SIZE, skip: 0 }})
+  const { loading, error, data, fetchMore, networkStatus  } = useQuery(GET_STORIES, { variables: { limit: PAGE_SIZE, skip: 0 }})
 
   // console.log(data.storyCollection.items.length)
   
@@ -117,6 +120,7 @@ function MainContent() {
   if (loading) return <span>Loading...</span>;
 
   if (error) return <span>Error : {error.message}</span>;  
+  if (networkStatus === NetworkStatus.fetchMore) return 'Fetching More Data!'
 
 // convert sys.publishedAt to DateString
 const convertDate = (str) => {
