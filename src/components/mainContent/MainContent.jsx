@@ -198,7 +198,7 @@ const renderOptions = (links) => {
       },
 
       [ BLOCKS.HEADING_3 ]: (node, children) => {
-        return <h3 className='heading-three' style={{ fontSize: "20px", marginTop: "2.5rem", marginBottom: "1.5rem"}}>{ children }</h3>
+        return <h3 className='heading-three' style={{ fontSize: "20px", marginTop: "2.5rem", marginBottom: "1rem"}}>{ children }</h3>
       },
 
       [INLINES.HYPERLINK]: ({ data }, children) => (
