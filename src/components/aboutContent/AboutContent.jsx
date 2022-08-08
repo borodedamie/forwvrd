@@ -1,11 +1,10 @@
 import { FaGreaterThan } from 'react-icons/fa'
 import aboutImg from '../../images/forward-about.png'
 import './AboutContent.css'
-import { useNavigate , Link} from 'react-router-dom'
+import { Link} from 'react-router-dom'
 
 
 function AboutContent() {
-const navigate = useNavigate();
 
 const handleSubmit = (e) => {
     e.preventDefault();
