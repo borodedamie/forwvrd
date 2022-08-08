@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom'
 
 import { Waypoint } from 'react-waypoint'
 
+import { GlobalContext } from "../../contexts/GlobalContext"
 import { useState, useContext } from 'react'
 import LoadingSpinner from '../loadingSpinner/LoadingSpinner'
 
@@ -65,12 +66,11 @@ query GetCategoryStory ($limit: Int!, $skip: Int){
   }
 `;
 
+const { search } = useContext(GlobalContext)
+
 const { loading, error, data, fetchMore } = useQuery(GET_CATEGORY_STORIES, { variables: { limit: PAGE_SIZE, skip: 0 }})
 
 const [visibleBtn , setVisibleBtn] = useState(false)
-
-
-// console.log(data.category.storiesCollection.items.length )
 
 // convert sys.publishedAt to DateString
 const convertDate = (str) => {
@@ -83,7 +83,7 @@ const convertDate = (str) => {
 const share = async (id) => {
     const shareData = {
       title: document.title,
-      url: `http://localhost:3000/story/${id}`
+      url: window.location.origin + `/story/${id}`
     }
   
     try {
@@ -184,10 +184,21 @@ if (error) return <span>Error : {error.message}</span>;
 
   return (
     <>
-        { data.category.storiesCollection.items.map((item, i) => (
+        { data.category.storiesCollection.items.filter((item) => {
+          if(search === "") {
+            return item
+          } else if( item?.title.toLowerCase().includes(search.toLowerCase())) {
+            return item
+          } else if( item?.author.name.toLowerCase().includes(search.toLowerCase())) {
+            return item
+          } else if ( item?.introduction.toLowerCase().includes(search.toLowerCase())) {
+            return item
+          } 
+          return false
+        }).map((item, i) => (
             <div className='mainContent' key={ item?.sys.id }>
                 <div className='text'>
-                    <h1>{ item.title }</h1>
+                    <h1>{ item?.title }</h1>
                     <p className='editor-name'>{ item?.author.name } . { convertDate( item?.sys.firstPublishedAt )} </p>
                 </div>
                 <div className='blog-Img-con'>
