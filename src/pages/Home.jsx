@@ -1,4 +1,3 @@
-import { React, useContext } from "react"
 import Navbar from "../components/navbar/Navbar"
 import MainContent from "../components/mainContent/MainContent"
 import { GlobalProvider } from '../../src/contexts/GlobalContext'
