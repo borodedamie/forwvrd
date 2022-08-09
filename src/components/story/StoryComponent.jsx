@@ -2,6 +2,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { useParams } from 'react-router-dom'
 import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types'
 import { useQuery, gql } from '@apollo/client'
+import '../mainContent/MainContent.css'
 import LoadingSpinner from '../loadingSpinner/LoadingSpinner'
 
 function Story() {
@@ -86,11 +87,11 @@ const renderOptions = (links) => {
     },
     renderNode: {
       [ BLOCKS.PARAGRAPH ]: (node, children) => {
-        return <p>{ children }</p>
+        return <p className='story'>{ children }</p>
       },
 
       [ BLOCKS.HEADING_3 ]: (node, children) => {
-        return <h3>{ children }</h3>
+        return <h3 className='heading-three'>{ children }</h3>
       },
 
       [INLINES.HYPERLINK]: ({ data }, children) => (
@@ -115,8 +116,8 @@ const renderOptions = (links) => {
         const asset = assetMap.get( node.data.target.sys.id );
 
         return (
-          <div>
-            <img src={ asset.url } alt="asset-img"/>
+          <div className='secondaryImgCon'>
+            <img src={ asset.url } alt="asset-img" className='secondaryImg'/>
           </div>
         )
       }
@@ -125,18 +126,18 @@ const renderOptions = (links) => {
 }
 
   return (
-    <div>
-      <div>
+    <div className='mainContent'>
+      <div className='text'>
         <h1>{ data?.story.title }</h1>
-        <p>{ data?.story.author.name } . { convertDate( data?.story.sys.publishedAt )}</p>
+        <p className='editor-name'>{ data?.story.author.name } . { convertDate( data?.story.sys.publishedAt )}</p>
       </div>
-      <div>
-        <img src={ data?.story.cover.url } alt="story-img" />
+      <div className='blog-Img-con'>
+        <img src={ data?.story.cover.url } alt="story-img" className='blog-img' />
       </div>
-      <div>
-        <p>{ data?.story.introduction }</p>
+      <div className='text'>
+        <p className='story'>{ data?.story.introduction }</p>
       </div>
-      <div>
+      <div className='text'>
         { documentToReactComponents( data?.story.story.json, renderOptions( data?.story.story.links ) ) }
       </div>
     </div>
