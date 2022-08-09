@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom'
 import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types'
 import { useQuery, gql } from '@apollo/client'
 import LoadingSpinner from '../loadingSpinner/LoadingSpinner'
+import logo from '../../images/logo.png'
+import { Link } from 'react-router-dom'
 
 function Story() {
 const { id } = useParams()
@@ -115,8 +117,8 @@ const renderOptions = (links) => {
         const asset = assetMap.get( node.data.target.sys.id );
 
         return (
-          <div>
-            <img src={ asset.url } alt="asset-img"/>
+          <div className="secondaryImgCon">
+            <img src={ asset.url } alt="asset-img" className='secondaryImg'/>
           </div>
         )
       }
@@ -125,21 +127,48 @@ const renderOptions = (links) => {
 }
 
   return (
-    <div>
-      <div>
+    <>
+    <div className='header'>
+            <Link to="/">
+                <div className="logo">
+                    <img src={logo} alt="" style={{ width: '100px' }} />
+                </div>
+            </Link>
+    </div>        
+    <div className='mainContent'>
+      <div className='text'>
         <h1>{ data?.story.title }</h1>
-        <p>{ data?.story.author.name } . { convertDate( data?.story.sys.publishedAt )}</p>
+        <p className='editor-name'>{ data?.story.author.name } . { convertDate( data?.story.sys.publishedAt )}</p>
       </div>
-      <div>
-        <img src={ data?.story.cover.url } alt="story-img" />
+      <div className="blog-Img-con">
+        <img src={ data?.story.cover.url } alt="story-img"   className='blog-img'/>
       </div>
-      <div>
-        <p>{ data?.story.introduction }</p>
+      <div className='text'>
+        <p  className='story'>{ data?.story.introduction }</p>
       </div>
-      <div>
-        { documentToReactComponents( data?.story.story.json, renderOptions( data?.story.story.links ) ) }
+      <div className="text">
+        <p className="story">{ documentToReactComponents( data?.story.story.json, renderOptions( data?.story.story.links ) ) }</p>
       </div>
     </div>
+
+    <div className="fixedFlex">
+            <div className="fixedLeft">
+              <Link to="/about" reloadDocument="true"><h5 className="about">ABOUT</h5></Link>
+              {/* <h5 onClick={ () => setAboutPage(true) } className='about'>ABOUT</h5> */}
+
+                <div className="terms">
+                    <p>Terms and Conditions <br /> Privacy Policy</p>
+              </div>
+            </div>
+
+            <div className="fixedRight">
+                <div className="social-links">
+                    <p>T</p>
+                    <p>IG</p>
+                </div>
+            </div>
+        </div>
+  </>  
   )
 }
 

@@ -29,4 +29,11 @@
         transform: rotate(360deg);
      }
   }
+@media (max-width:768px) {
+  .loader {
+    left:45%;
+    top: 50%;
+    z-index: 1;
+  }
+}
 

@@ -110,8 +110,8 @@ li {
     font-size: 20px;
   }
   .fixedFlex{
-    padding: 0;
     margin-top: 1rem;
+    
   }
   .fixedLeft {
     position: static;

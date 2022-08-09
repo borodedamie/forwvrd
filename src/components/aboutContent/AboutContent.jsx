@@ -104,7 +104,7 @@ const handleSubmit = (e) => {
             </div>
 
 
-            <div className="fixedFlex">
+            <div className="fixedFlex" style={{padding:'0'}}>
             <div className="fixedLeft">
               <Link to="/about" reloadDocument="true"><h5 className="about">ABOUT</h5></Link>
               {/* <h5 onClick={ () => setAboutPage(true) } className='about'>ABOUT</h5> */}
