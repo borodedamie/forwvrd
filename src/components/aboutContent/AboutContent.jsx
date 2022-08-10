@@ -3,21 +3,23 @@ import aboutImg from '../../images/forward-about.png'
 import './AboutContent.css'
 import { Link} from 'react-router-dom'
 
+import { useForm, ValidationError } from '@formspree/react'
+import { toast } from 'react-toastify';
+
 
 function AboutContent() {
-
-const handleSubmit = (e) => {
-    e.preventDefault();
-    let myForm = document.getElementById("sub");
-    let formData = new FormData(myForm);
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData).toString(),
-    })
-      .then(() => console.log("Form successfully submitted"))
-      .catch((error) => alert(error));
-};
+const [ state, handleSubmit ] = useForm('xnqrqnlr')
+if ( state.succeeded ) {
+    toast.success('Thank you for joining!', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
+}
 
     return (
         <div className='aboutContent'>
@@ -90,13 +92,18 @@ const handleSubmit = (e) => {
 
                 <li className="role">Subscribe to receive updates</li>
 
-                <form onSubmit={ handleSubmit } id="sub" method="POST" data-netlify="true">
+                <form onSubmit={ handleSubmit }>
                     <div className="input-con-flex">
-                        <input type="text" 
+                        <input type="email" 
                             placeholder='Email'
                             name='email'
                         />
-                        <button type='submit' className="discover-Btn">
+                        <ValidationError 
+                            prefix='Email'
+                            field='email'
+                            errors={ state.errors } 
+                        />
+                        <button type='submit' className="discover-Btn" disabled={ state.submitting }>
                             <FaGreaterThan  style={{cursor:'pointer'}}/>
                         </button>
                     </div>
