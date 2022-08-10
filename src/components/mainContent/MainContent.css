@@ -210,6 +210,11 @@
   .secondaryImgCon {
     width: 70%;
   }
+  .fixedScrollToTop{
+    position: fixed;
+    bottom: 10%;
+    left: 45%;
+  }
   .fixedLeft {
     position: static;
   }
@@ -249,4 +254,5 @@
     justify-content: space-between;
     padding: 2rem 2rem 1rem 2rem;
   }
+  
 }
