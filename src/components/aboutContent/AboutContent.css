@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 2fr;
   gap: 3.5rem;
-  padding: 4rem 2rem 0rem 2rem;
+  padding: 5.4rem 2rem 0rem 2rem;
   /* margin-left:-11rem; */
 }
 .aboutImg {
@@ -15,7 +15,7 @@ li {
   list-style-type: none;
 }
 .row1{
-  margin-top: 2.5rem;
+  margin-top: 1rem;
 }
 .row1 h1 {
   font-family: "Abhaya Libre";
@@ -42,7 +42,7 @@ li {
   margin-top: 7%;
 }
 .about-title h3 {
-  margin-top: 3rem;
+  margin-top: 2rem;
   font-family: Inter;
   font-size: 23px;
   font-weight: 700;
@@ -51,7 +51,7 @@ li {
   text-align: left;
 }
 .roles-section {
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.6rem;
 }
 .role-name {
   font-family: Inter;

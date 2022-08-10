@@ -117,7 +117,7 @@ function MainContent() {
     }));
   };
  
-  // prints loading on the page until data is fetched from the DB
+  // shows loading spinner on the page until data is fetched from the DB
   if (loading) return <LoadingSpinner/>;
 
   if (error) return <span>Error : {error.message}</span>;  
