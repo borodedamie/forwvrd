@@ -3,7 +3,10 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Story from './pages/Story'
 import Category from './pages/Category'
-// import 'bootstrap/dist/css/bootstrap.min.css';
+
+import { ToastContainer } from 'react-toastify';
+
+  import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -16,6 +19,7 @@ function App() {
             <Route path='/category/:categoryId' element={  <Category /> }/>
           </Routes>
       </Router>
+      <ToastContainer />
     </>
   );
 }
