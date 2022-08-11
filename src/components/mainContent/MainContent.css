@@ -169,6 +169,10 @@
 
 /* Media Queries */
 @media (max-width: 576px) {
+  input, select, textarea {
+    font-size: 16px;
+  }
+
   .mainContent {
     margin: 0px auto 0px auto;
     width: 100%;
@@ -232,6 +236,10 @@
   } */
 }
 @media  (min-width:576px) and (max-width:992px){
+  input, select, textarea {
+    font-size: 16px;
+  }
+  
   .mainContent {
     margin: 60px auto 0px auto;
   }

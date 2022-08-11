@@ -9,18 +9,17 @@ import { toast } from 'react-toastify';
 
 function AboutContent() {
 const [ state, handleSubmit ] = useForm('xnqrqnlr')
-if ( state.succeeded ) {
-    // toast.success('Thank you for joining!', {
-    //     position: "bottom-right",
-    //     autoClose: 5000,
-    //     hideProgressBar: false,
-    //     closeOnClick: true,
-    //     pauseOnHover: true,
-    //     draggable: true,
-    //     progress: undefined,
-    // });
 
-    console.log('good!')
+if ( state.succeeded ) {
+    toast.success('Thank you for joining!', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
 }
 
     return (
