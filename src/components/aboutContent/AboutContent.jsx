@@ -20,6 +20,8 @@ if ( state.succeeded ) {
         draggable: true,
         progress: undefined,
     });
+
+    document.querySelector('#email').value = ""
 }
 
     return (
@@ -98,6 +100,7 @@ if ( state.succeeded ) {
                         <input type="email" 
                             placeholder='Email'
                             name='email'
+                            id='email'
                         />
                         <ValidationError 
                             prefix='Email'
