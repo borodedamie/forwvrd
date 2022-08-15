@@ -187,11 +187,9 @@ if (error) return <span>Error : {error.message}</span>;
         { data.category.storiesCollection.items.filter((item) => {
           if(search === "") {
             return item
-          } else if( item?.title.toLowerCase().includes(search.toLowerCase())) {
-            return item
-          } else if( item?.author.name.toLowerCase().includes(search.toLowerCase())) {
-            return item
-          } else if ( item?.introduction.toLowerCase().includes(search.toLowerCase())) {
+          } else if( item?.title.toLowerCase().includes(search.toLowerCase()) ||
+                      item?.author.name.toLowerCase().includes(search.toLowerCase()) ||
+                      item?.introduction.toLowerCase().includes(search.toLowerCase())) {
             return item
           } 
           return false
