@@ -230,17 +230,11 @@ const renderOptions = (links) => {
         { data?.storyCollection.items.filter((item) => {
           if (search === "") {
             return item
-          } else if (item?.title.toLowerCase().includes(search.toLowerCase())) {
-            return item
-          } else if (item?.author.name.toLowerCase().includes(search.toLowerCase())) {
-            return item
-          } else if (item?.introduction.toLowerCase().includes(search.toLowerCase())) {
+          } else if (item?.title.toLowerCase().includes(search.toLowerCase()) || 
+                    item?.author.name.toLowerCase().includes(search.toLowerCase()) ||
+                    item?.introduction.toLowerCase().includes(search.toLowerCase()) ) {
             return item
           } 
-          // else if (item?.category.name.toLowerCase().includes(search.toLowerCase())) {
-          //   console.log(item)
-          //   return item
-          // }
           return false
         }).map((item, i) => (
         <div key={ item?.sys.id }>
