@@ -71,7 +71,6 @@ li {
   gap: 1rem;
   border-bottom: 1px solid black;
   width: 270px;
-  /* align-items: center; */
   justify-content: space-between;
   padding-bottom: .7rem;
 }
@@ -108,6 +107,9 @@ li {
     margin-top: 3.5rem;
     font-family: Inter;
     font-size: 20px;
+  }
+  .input-con-flex {
+    width: 100%;
   }
   .fixedFlex{
     margin-top: 1rem;
