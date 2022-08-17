@@ -1,0 +1,41 @@
+.error-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 30px;
+}
+.error-image{
+    width: 700px;
+}
+.error-page h1{
+    font-size: 3rem;
+    font-weight: 700;
+}
+.error-page p{
+    font-size: 1.3rem;
+    color: rgb(163, 163, 163);
+    font-weight: 700;
+    margin-top: 1rem;
+}
+.refresh-btn{
+    padding: 8px 3rem;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 400;
+    background-color: rgb(35, 25, 57);
+    border-radius: 5px;
+    margin-top: 1rem;
+}
+@media (max-width:576px) {
+    .error-image{
+        width: 300px;
+    }
+    .error-page h1{
+        font-size: 2.5rem;
+        /* font-weight: 700; */
+    }
+}
