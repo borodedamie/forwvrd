@@ -14,6 +14,7 @@ import { Waypoint } from 'react-waypoint'
 import { GlobalContext } from "../../contexts/GlobalContext"
 import { useState, useContext } from 'react'
 import LoadingSpinner from '../loadingSpinner/LoadingSpinner'
+import ErrorPage from '../errorPage/ErrorPage'
 
 const PAGE_SIZE = 3
 
@@ -179,8 +180,7 @@ window.addEventListener('scroll', makeBtnVisible);
   }
 
 if (loading) return <LoadingSpinner />;
-if (error) return <span>Error : {error.message}</span>; 
-  
+if (error) return <ErrorPage message = {error.message} />;    
 
   return (
     <>

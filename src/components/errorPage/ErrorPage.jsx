@@ -4,7 +4,7 @@ import './ErrorPage.css'
 import logo from '../../images/logo.png'
 import { Link } from 'react-router-dom'
 
-function ErrorPage() {
+function ErrorPage( props ) {
   return (
     <>
     <div className='header'>
@@ -19,8 +19,8 @@ function ErrorPage() {
             <img src={errorImage} alt="" className="error-image" />
         </div>
         <h1>Something went wrong</h1>
-        <p>Failed to fetch Data due to poor internet connection. We suggest you refresh</p>
-        <button className='refresh-btn'>Refresh</button>
+        <p>{ props.message }</p>
+        <Link to='/' reloadDocument='true' className='refresh-btn'>Go Home</Link>
     </div>
     </>
   )

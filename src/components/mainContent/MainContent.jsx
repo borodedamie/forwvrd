@@ -16,6 +16,8 @@ import { GlobalContext } from "../../contexts/GlobalContext"
 import { useQuery, gql } from '@apollo/client';
 import LoadingSpinner from '../loadingSpinner/LoadingSpinner'
 
+import ErrorPage from '../errorPage/ErrorPage'
+
 const PAGE_SIZE = 3
 
 const GET_STORIES = gql`
@@ -120,7 +122,7 @@ function MainContent() {
   // shows loading spinner on the page until data is fetched from the DB
   if (loading) return <LoadingSpinner/>;
 
-  if (error) return <span>Error : {error.message}</span>;  
+  if (error) return <ErrorPage message = {error.message} />;  
   if (networkStatus === NetworkStatus.fetchMore) return 'Fetching More Data!'
 
 // convert sys.publishedAt to DateString
