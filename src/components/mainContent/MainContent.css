@@ -1,7 +1,14 @@
 .mainContent {
   margin: 100px auto 5% auto;
   width: 80%;
+  height: auto;
+  scroll-snap-type: y mandatory;
 }
+
+.story-start {
+  scroll-snap-align: start;
+}
+
 .blog-Img-con {
   width: 60%;
   margin: 5% auto;
@@ -176,8 +183,15 @@
   .mainContent {
     margin: 0px auto 0px auto;
     width: 100%;
+    scroll-snap-type: y mandatory;
 
   }
+
+  .story-start {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
   .blog-Img-con {
     width: 85%;
     margin: 6% auto;    
@@ -242,7 +256,14 @@
   
   .mainContent {
     margin: 60px auto 0px auto;
+    scroll-snap-type: y mandatory;
   }
+
+  .story-start {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
   .blog-Img-con {
     width: 90%;
   }
