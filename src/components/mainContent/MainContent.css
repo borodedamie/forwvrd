@@ -173,6 +173,28 @@
   font-weight: 900;
   font-size: 1.1rem;
 } 
+.story code{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* width: 90%;
+  margin: 0 auto; */
+  
+}
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+th .story{
+  font-weight: bold;
+}
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
 
 /* Media Queries */
 @media (max-width: 576px) {

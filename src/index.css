@@ -9,3 +9,13 @@ html{
 a{
     text-decoration: none;
 }
+ol, ul{
+    /* list-style-type:inherit; */
+    padding-left: 0;
+}
+ol{
+    list-style-type: decimal;
+}
+ul{
+    list-style-type:disc;
+}
