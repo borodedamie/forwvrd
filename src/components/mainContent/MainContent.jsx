@@ -171,7 +171,8 @@ const renderOptions = (links) => {
                                               textDecorationThickness: "2em",
                                               textDecoration: "underline",
                                             }}>{text}</span>,
-      [ MARKS.ITALIC ]: (text) => <i>{text}</i>
+      [ MARKS.ITALIC ]: (text) => <i>{text}</i>,
+      [ MARKS.CODE ]: (text) => <code>{ text }</code>
     },
     renderNode: {
       [ BLOCKS.EMBEDDED_ASSET ]: (node, next) => {
@@ -203,8 +204,28 @@ const renderOptions = (links) => {
         return <p className='story'>{ children }</p>
       },
 
+      [ BLOCKS.HEADING_1 ]: (node, children) => {
+        return <h1>{ children }</h1>
+      },
+
+      [ BLOCKS.HEADING_2 ]: (node, children) => {
+        return <h2>{ children }</h2>
+      },
+
       [ BLOCKS.HEADING_3 ]: (node, children) => {
-        return <h3 className='heading-three' style={{ fontSize: "20px", marginTop: "2.5rem", marginBottom: "1rem"}}>{ children }</h3>
+          return <h3 className='heading-three' style={{ fontSize: "20px", marginTop: "1rem", marginBottom: "1rem"}}>{ children }</h3>
+      },
+
+      [ BLOCKS.HEADING_4 ]: (node, children) => {
+        return <h4>{ children }</h4>
+      },
+
+      [ BLOCKS.HEADING_5 ]: (node, children) => {
+        return <h5>{ children }</h5>
+      },
+
+      [ BLOCKS.HEADING_6 ]: (node, children) => {
+        return <h6>{ children }</h6>
       },
 
       [INLINES.HYPERLINK]: ({ data }, children) => (

@@ -137,15 +137,36 @@ window.addEventListener('scroll', makeBtnVisible);
       renderMark: {
         [ MARKS.BOLD ]: (text) => <b>{ text }</b>,
         [ MARKS.UNDERLINE ]: (text) => <span>{ text }</span>,
-        [ MARKS.ITALIC ]: (text) => <i>{ text }</i>
+        [ MARKS.ITALIC ]: (text) => <i>{ text }</i>,
+        [ MARKS.CODE ]: (text) => <code>{ text }</code>
       },
       renderNode: {
         [ BLOCKS.PARAGRAPH ]: (node, children) => {
           return <p className='story'>{ children }</p>
         },
+
+        [ BLOCKS.HEADING_1 ]: (node, children) => {
+          return <h1>{ children }</h1>
+        },
+
+        [ BLOCKS.HEADING_2 ]: (node, children) => {
+          return <h2>{ children }</h2>
+        },
   
         [ BLOCKS.HEADING_3 ]: (node, children) => {
             return <h3 className='heading-three' style={{ fontSize: "20px", marginTop: "1rem", marginBottom: "1rem"}}>{ children }</h3>
+        },
+
+        [ BLOCKS.HEADING_4 ]: (node, children) => {
+          return <h4>{ children }</h4>
+        },
+
+        [ BLOCKS.HEADING_5 ]: (node, children) => {
+          return <h5>{ children }</h5>
+        },
+
+        [ BLOCKS.HEADING_6 ]: (node, children) => {
+          return <h6>{ children }</h6>
         },
   
         [INLINES.HYPERLINK]: ({ data }, children) => (
@@ -157,14 +178,16 @@ window.addEventListener('scroll', makeBtnVisible);
         ),
   
         [ BLOCKS.UL_LIST ]: (node, children) => (
-          <ul>{ children }</ul>
+          <ul>
+            <li>{ children }</li>
+          </ul>
         ),
   
         [ BLOCKS.OL_LIST ]: (node, children) => (
           <ol>{ children }</ol>
         ),
   
-        [ BLOCKS.LIST_ITEM ]: (node, children) => <li>{ children }</li>,
+        [ BLOCKS.LIST_ITEM ]: (node, children) => <li style={{ fontSize: '16px'}}>{ children }</li>,
   
         [ BLOCKS.EMBEDDED_ASSET ]: (node, next) => {
           const asset = assetMap.get( node.data.target.sys.id );
