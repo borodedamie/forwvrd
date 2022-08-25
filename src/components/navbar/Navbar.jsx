@@ -40,7 +40,7 @@ const onEnter = (event) => {
 
     return (
         <div className='header'>
-            <Link to="/">
+            <Link to="/home">
                 <div className="logo">
                     <img src={logo} alt="" style={{ width: '100px' }} />
                 </div>

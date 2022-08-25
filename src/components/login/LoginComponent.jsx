@@ -11,7 +11,7 @@ function LoginComponent() {
     const submitLoginForm = (event) => {
         event.preventDefault()
 
-        if( password === `${process.env.PASSWORD}` ) {
+        if( password === `${ process.env.REACT_APP_LOGIN_PASSWORD }`) {
             navigate('/home')
         } 
     }
@@ -19,9 +19,9 @@ function LoginComponent() {
   return (
     <div>
         <div className="loginPage">
-            <div onClick={ () => navigate('/' )} className="header">
+            {/* <div onClick={ () => navigate('/' )} className="header">
                 <img src={logo} alt="" style={{ width: '100px' }} />
-            </div>
+            </div> */}
 
            <div className="login-page">
            <div className="loginCon">
