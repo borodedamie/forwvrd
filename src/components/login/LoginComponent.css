@@ -56,3 +56,21 @@
  .header:hover {
     cursor: pointer;
 }
+/* Media Queries */
+@media (max-width: 576px) {
+    .login-page{
+        margin: 2rem auto;
+        padding: 0 2rem;
+    }
+    .loginCon{
+        padding-top: 2rem;
+        width: 100%;
+    }
+}
+@media  (min-width:576px) and (max-width:992px){
+    .loginCon{
+        padding-top: 2rem;
+        width: 50%;
+    }
+
+}
