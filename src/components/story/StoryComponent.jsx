@@ -151,23 +151,22 @@ const renderOptions = (links) => {
       </div>
     </div>
 
-    <div className="fixedFlex">
-            <div className="fixedLeft">
-              <Link to="/about" reloadDocument="true"><h5 className="about">ABOUT</h5></Link>
-              {/* <h5 onClick={ () => setAboutPage(true) } className='about'>ABOUT</h5> */}
+   <div className="fixedFlex">
+    <div className="fixedLeft">
+      <Link to="/about" reloadDocument="true"><h5 className="about">ABOUT</h5></Link>
 
-                <div className="terms">
-                    <p>Terms and Conditions <br /> Privacy Policy</p>
-              </div>
-            </div>
-
-            <div className="fixedRight">
-                <div className="social-links">
-                    <p>T</p>
-                    <p>IG</p>
-                </div>
-            </div>
+        <div className="terms">
+          <p>Terms and Conditions <br /> Privacy Policy</p>
         </div>
+    </div>
+
+    <div className="fixedRight">
+      <div className="social-links">
+        <p>T</p>
+        <p>IG</p>
+      </div>
+    </div>
+  </div>
   </>  
   )
 }

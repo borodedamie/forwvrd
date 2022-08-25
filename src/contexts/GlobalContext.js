@@ -4,10 +4,10 @@ export const GlobalContext = createContext({})
 
 export const GlobalProvider = ({ children }) => {
     const [ search, setSearch ] = useState("")
-    const [ aboutPage, setAboutPage ] = useState(false)
+    const [ spinner, setSpinner ] = useState(false)
 
     return (
-        <GlobalContext.Provider value={{ search, setSearch, aboutPage, setAboutPage }} >
+        <GlobalContext.Provider value={{ search, setSearch, spinner, setSpinner }} >
             { children }
         </GlobalContext.Provider>
     )

@@ -7,8 +7,6 @@ import { FaGreaterThan, FaShareAlt } from 'react-icons/fa'
 import { GrClose } from 'react-icons/gr'
 import {  AiOutlineUp } from 'react-icons/ai'
 
-import { Link } from 'react-router-dom'
-
 import { Waypoint } from 'react-waypoint'
 
 import { GlobalContext } from "../../contexts/GlobalContext"
@@ -278,7 +276,7 @@ if (error) return <ErrorPage message = {error.message} />;
             </div>
         </div>
 
-        <div className="fixedFlex">
+        {/* <div className="fixedFlex">
             <div className="fixedLeft">
               <Link to="/about" reloadDocument="true"><h5 className="about">ABOUT</h5></Link>
 
@@ -293,7 +291,7 @@ if (error) return <ErrorPage message = {error.message} />;
                     <p>IG</p>
                 </div>
             </div>
-        </div>
+        </div> */}
     </>
   )
 }

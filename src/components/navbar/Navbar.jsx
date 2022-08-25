@@ -1,13 +1,10 @@
 import { useState, useContext } from "react";
-
 import { FaGreaterThan } from 'react-icons/fa'
 import { AiOutlineSearch, AiOutlineUp } from 'react-icons/ai'
 import logo from '../../images/logo.png'
 import { Link, useNavigate } from 'react-router-dom'
-
 import './Navbar.css'
 import { GlobalContext } from "../../contexts/GlobalContext";
-
 import { useQuery, gql } from '@apollo/client';
 
 const GET_CATEGORIES = gql`
@@ -26,7 +23,7 @@ query {
 function Navbar() {
 const { loading, error, data } = useQuery(GET_CATEGORIES);
 
-const { search, setSearch, setAboutPage } = useContext(GlobalContext)
+const { search, setSearch, setSpinner } = useContext(GlobalContext)
 const [ displaySearch, setDisplaySearch ] = useState(false)
 
 const navigate = useNavigate()
@@ -37,8 +34,7 @@ if (error) return <span>Error : {error.message}</span>;
 // call function on the search button when the enter key is pressed
 const onEnter = (event) => {
     if(event.charCode === 13) {
-        setDisplaySearch(false)
-        setAboutPage(false)
+        setSpinner(false)
     }
 }
 
@@ -88,7 +84,8 @@ const onEnter = (event) => {
                        type="text" 
                        placeholder='Search' 
                        name={ search }
-                       onChange={event => setSearch(event.target.value) }
+                       onChange={ event => setSearch(event.target.value) }
+                       onFocus={ () => setSpinner(true) }
                        onKeyPress={ onEnter }
                 />
                     <div className="search-display">
@@ -116,7 +113,7 @@ const onEnter = (event) => {
                 </div>              
             </div>           
         </div>
-       }                
+       }           
         </div>
     )
 }

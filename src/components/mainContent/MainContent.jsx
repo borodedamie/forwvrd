@@ -1,7 +1,6 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types'
 import './MainContent.css'
-import { Link } from 'react-router-dom'
 import { FaGreaterThan, FaShareAlt } from 'react-icons/fa'
 import { GrClose } from 'react-icons/gr'
 import {  AiOutlineUp } from 'react-icons/ai'
@@ -70,11 +69,9 @@ query GetStories( $limit: Int!, $skip: Int ) {
 
 function MainContent() {
 
-  const { search } = useContext(GlobalContext)
+  const { search, spinner } = useContext(GlobalContext)
   
-  const { loading, error, data, fetchMore, networkStatus  } = useQuery(GET_STORIES, { variables: { limit: PAGE_SIZE, skip: 0 }})
-
-  // console.log(data.storyCollection.items.length)
+  const { loading, error, data, fetchMore, networkStatus  } = useQuery(GET_STORIES, { variables: { limit: PAGE_SIZE, skip: 0 } })
   
   const [visibleBtn , setVisibleBtn] = useState(false)
 
@@ -123,7 +120,6 @@ function MainContent() {
   if (loading) return <LoadingSpinner/>;
 
   if (error) return <ErrorPage message = {error.message} />;  
-  if (networkStatus === NetworkStatus.fetchMore) return 'Fetching More Data!'
 
 // convert sys.publishedAt to DateString
 const convertDate = (str) => {
@@ -249,7 +245,7 @@ const renderOptions = (links) => {
 
   return (
     <>
-    <div className='mainContent'>
+  { !spinner &&  <div className='mainContent'>
         { data?.storyCollection.items.filter((item) => {
           if (search === "") {
             return item
@@ -258,7 +254,7 @@ const renderOptions = (links) => {
                     item?.introduction.toLowerCase().includes(search.toLowerCase()) ) {
             return item
           } 
-          return false
+          return item
         }).map((item, i) => (
         <div key={ item?.sys.id } className='story-start'>
             <div className='text' >
@@ -290,7 +286,7 @@ const renderOptions = (links) => {
         </div>          
         ))}
 
-        <Waypoint onEnter={ () => fetchMore({ 
+       {<Waypoint onEnter={ () => fetchMore({ 
                 variables: { skip: data.storyCollection.items.length }, 
                 updateQuery: ( prev, { fetchMoreResult }) => {
                   if(!fetchMoreResult) return prev;
@@ -300,7 +296,7 @@ const renderOptions = (links) => {
                     }
                   });
                 }
-              })}/> 
+        })}/> }
 
         <div className="fixedScroll" style={{display: visibleBtn ? 'block' : 'none'}}>
             <div className="discover-Btn fixedScrollToTop" >
@@ -318,25 +314,9 @@ const renderOptions = (links) => {
                 style={{color:'#fff', cursor:'pointer',fontSize: '1.6rem'}}/>
             </div> 
         </div>
-        
-        <div className="fixedFlex">
-            <div className="fixedLeft">
-              <Link to="/about" reloadDocument="true"><h5 className="about">ABOUT</h5></Link>
-              {/* <h5 onClick={ () => setAboutPage(true) } className='about'>ABOUT</h5> */}
+  </div> }
 
-                <div className="terms">
-                    <p>Terms and Conditions <br /> Privacy Policy</p>
-              </div>
-            </div>
-
-            <div className="fixedRight">
-                <div className="social-links">
-                    <p>T</p>
-                    <p>IG</p>
-                </div>
-            </div>
-        </div>
-  </div>
+  { spinner && <LoadingSpinner /> }
   </>
   )
 }
