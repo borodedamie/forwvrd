@@ -254,7 +254,7 @@ const renderOptions = (links) => {
                     item?.introduction.toLowerCase().includes(search.toLowerCase()) ) {
             return item
           } 
-          return item
+          return false
         }).map((item, i) => (
         <div key={ item?.sys.id } className='story-start'>
             <div className='text' >

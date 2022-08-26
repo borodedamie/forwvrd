@@ -85,8 +85,9 @@ const onEnter = (event) => {
                        placeholder='Search' 
                        name={ search }
                        onChange={ event => setSearch(event.target.value) }
-                       onFocus={ () => setSpinner(true) }
-                       onKeyPress={ onEnter }
+                       onKeyDown={ () => setSpinner(true) }
+                       onKeyUp={ () => setSpinner(false)}
+                    //    onKeyPress={ onEnter }
                 />
                     <div className="search-display">
                         <AiOutlineSearch style={{ fontSize: '2rem', cursor:'pointer' }} onClick={ () => setDisplaySearch(false) }/>
