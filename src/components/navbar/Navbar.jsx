@@ -32,11 +32,11 @@ if (loading) return console.log('Loading...');
 if (error) return <span>Error : {error.message}</span>;
 
 // call function on the search button when the enter key is pressed
-const onEnter = (event) => {
-    if(event.charCode === 13) {
-        setSpinner(false)
-    }
-}
+// const onEnter = (event) => {
+//     if(event.charCode === 13) {
+//         setSpinner(false)
+//     }
+// }
 
     return (
         <div className='header'>
