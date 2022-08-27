@@ -5,9 +5,7 @@
   scroll-snap-type: y mandatory;
 }
 .hyperLinks{
-  text-decoration: none;
-  color: #000;
-  /* color: red; */
+  text-decoration-line: none;
 }
 .story-start {
   scroll-snap-align: start;
