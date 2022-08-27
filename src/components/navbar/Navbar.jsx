@@ -32,15 +32,15 @@ if (loading) return console.log('Loading...');
 if (error) return <span>Error : {error.message}</span>;
 
 // call function on the search button when the enter key is pressed
-const onEnter = (event) => {
-    if(event.charCode === 13) {
-        setSpinner(false)
-    }
-}
+// const onEnter = (event) => {
+//     if(event.charCode === 13) {
+//         setSpinner(false)
+//     }
+// }
 
     return (
         <div className='header'>
-            <Link to="/">
+            <Link to="/home">
                 <div className="logo">
                     <img src={logo} alt="" style={{ width: '100px' }} />
                 </div>
@@ -85,8 +85,9 @@ const onEnter = (event) => {
                        placeholder='Search' 
                        name={ search }
                        onChange={ event => setSearch(event.target.value) }
-                       onFocus={ () => setSpinner(true) }
-                       onKeyPress={ onEnter }
+                       onKeyDown={ () => setSpinner(true) }
+                       onKeyUp={ () => setSpinner(false)}
+                    //    onKeyPress={ onEnter }
                 />
                     <div className="search-display">
                         <AiOutlineSearch style={{ fontSize: '2rem', cursor:'pointer' }} onClick={ () => setDisplaySearch(false) }/>

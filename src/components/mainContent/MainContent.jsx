@@ -5,17 +5,14 @@ import { FaGreaterThan, FaShareAlt } from 'react-icons/fa'
 import { GrClose } from 'react-icons/gr'
 import {  AiOutlineUp } from 'react-icons/ai'
 import { useState, useContext } from 'react'
-
 // Get FetchMore Network Status
 import { NetworkStatus } from '@apollo/client';
-
 import { Waypoint } from 'react-waypoint'
-
 import { GlobalContext } from "../../contexts/GlobalContext"
 import { useQuery, gql } from '@apollo/client';
 import LoadingSpinner from '../loadingSpinner/LoadingSpinner'
-
 import ErrorPage from '../errorPage/ErrorPage'
+import { Link } from 'react-router-dom'
 
 const PAGE_SIZE = 3
 
@@ -97,13 +94,13 @@ function MainContent() {
     }
   }
   
-  // const scrollToTop = () =>{
-  //   window.scrollTo({
-  //     top: 0, 
-  //     behavior: 'smooth'
+  const scrollToTop = () =>{
+    window.scrollTo({
+      top: 0, 
+      behavior: 'smooth'
   
-  //   });
-  // };
+    });
+  };
   
   window.addEventListener('scroll', makeBtnVisible);
   
@@ -255,7 +252,7 @@ const renderOptions = (links) => {
                     item?.introduction.toLowerCase().includes(search.toLowerCase()) ) {
             return item
           } 
-          return item
+          return false
         }).map((item, i) => (
         <div key={ item?.sys.id } className='story-start'>
             <div className='text' >
@@ -287,7 +284,7 @@ const renderOptions = (links) => {
         </div>          
         ))}
 
-       {<Waypoint onEnter={ () => fetchMore({ 
+        <Waypoint onEnter={ () => fetchMore({ 
                 variables: { skip: data.storyCollection.items.length }, 
                 updateQuery: ( prev, { fetchMoreResult }) => {
                   if(!fetchMoreResult) return prev;
@@ -297,27 +294,34 @@ const renderOptions = (links) => {
                     }
                   });
                 }
-        })}/> }
+        })} /> 
 
         <div className="fixedScroll" style={{display: visibleBtn ? 'block' : 'none'}}>
             <div className="discover-Btn fixedScrollToTop" >
-              <AiOutlineUp onClick={ () => fetchMore({ 
-                variables: { skip: data.storyCollection.items.length }, 
-                updateQuery: ( prev, { fetchMoreResult }) => {
-                  if(!fetchMoreResult) return prev;
-                  return Object.assign({}, prev, {
-                    storyCollection: {
-                      items: [ ...prev.storyCollection.items, ...fetchMoreResult.storyCollection.items ]
-                    }
-                  });
-                }
-              }) } 
+              <AiOutlineUp onClick={ scrollToTop } 
                 style={{color:'#fff', cursor:'pointer',fontSize: '1.6rem'}}/>
             </div> 
         </div>
   </div> }
 
   { spinner && <LoadingSpinner /> }
+
+  <div className="fixedFlex">
+            <div className="fixedLeft">
+              <Link to="/about" reloadDocument="true"><h5 className="about">ABOUT</h5></Link>
+
+                <div className="terms">
+                    <p>Terms and Conditions <br /> Privacy Policy</p>
+              </div>
+            </div>
+
+            <div className="fixedRight">
+                <div className="social-links">
+                    <p>T</p>
+                    <p>IG</p>
+                </div>
+            </div>
+        </div>
   </>
   )
 }

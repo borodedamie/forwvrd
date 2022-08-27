@@ -6,13 +6,12 @@ import '../mainContent/MainContent.css'
 import { FaGreaterThan, FaShareAlt } from 'react-icons/fa'
 import { GrClose } from 'react-icons/gr'
 import {  AiOutlineUp } from 'react-icons/ai'
-
 import { Waypoint } from 'react-waypoint'
-
 import { GlobalContext } from "../../contexts/GlobalContext"
 import { useState, useContext } from 'react'
 import LoadingSpinner from '../loadingSpinner/LoadingSpinner'
 import ErrorPage from '../errorPage/ErrorPage'
+import { Link } from 'react-router-dom'
 
 const PAGE_SIZE = 3
 
@@ -65,7 +64,7 @@ query GetCategoryStory ($limit: Int!, $skip: Int){
   }
 `;
 
-const { search } = useContext(GlobalContext)
+const { search, spinner } = useContext(GlobalContext)
 
 const { loading, error, data, fetchMore } = useQuery(GET_CATEGORY_STORIES, { variables: { limit: PAGE_SIZE, skip: 0 }})
 
@@ -111,6 +110,14 @@ const toggleHandler = (id) => {
        setVisibleBtn(false)
      }
    }
+
+  const scrollToTop = () =>{
+    window.scrollTo({
+      top: 0, 
+      behavior: 'smooth'
+  
+    });
+  };
 
 window.addEventListener('scroll', makeBtnVisible);
 
@@ -205,7 +212,7 @@ if (error) return <ErrorPage message = {error.message} />;
 
   return (
     <>
-        { data.category.storiesCollection.items.filter((item) => {
+        { !spinner && data.category.storiesCollection.items.filter((item) => {
           if(search === "") {
             return item
           } else if( item?.title.toLowerCase().includes(search.toLowerCase()) ||
@@ -243,7 +250,7 @@ if (error) return <ErrorPage message = {error.message} />;
             </div>
         )) }
 
-            <Waypoint onEnter={ () => fetchMore({ 
+      { !spinner && <Waypoint onEnter={ () => fetchMore({ 
                 variables: { skip: data.category.storiesCollection.items.length }, 
                 updateQuery: ( prev, { fetchMoreResult }) => {
                     if(!fetchMoreResult) return prev;
@@ -255,28 +262,18 @@ if (error) return <ErrorPage message = {error.message} />;
                         }
                     });
                 }
-              })}/> 
+      })} /> }
 
         <div className='fixedScroll' style={{display: visibleBtn ? 'block' : 'none'}}>
             <div className="discover-Btn fixedScrollToTop">
-                <AiOutlineUp onClick={ () => fetchMore({
-                    variables: { skip: data.category.storiesCollection.items.length },
-                    updateQuery: ( prev, { fetchMoreResult }) => {
-                        if(!fetchMoreResult) return prev;
-                        return Object.assign({}, prev, {
-                            category: {
-                                storiesCollection: {
-                                    items: [ ...prev.category.storiesCollection.items, ...fetchMoreResult.category.storiesCollection.items ]
-                                }
-                            }
-                        });
-                    }
-                })}
+                <AiOutlineUp onClick={ scrollToTop }
                 style={{color:'#fff', cursor:'pointer',fontSize: '1.6rem'}}/>
             </div>
         </div>
 
-        {/* <div className="fixedFlex">
+        { spinner && <LoadingSpinner /> }
+
+        <div className="fixedFlex">
             <div className="fixedLeft">
               <Link to="/about" reloadDocument="true"><h5 className="about">ABOUT</h5></Link>
 
@@ -291,7 +288,7 @@ if (error) return <ErrorPage message = {error.message} />;
                     <p>IG</p>
                 </div>
             </div>
-        </div> */}
+        </div>
     </>
   )
 }
