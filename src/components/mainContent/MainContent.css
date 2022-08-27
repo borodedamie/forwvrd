@@ -4,7 +4,11 @@
   height: auto;
   scroll-snap-type: y mandatory;
 }
-
+.hyperLinks{
+  text-decoration: none;
+  color: #000;
+  /* color: red; */
+}
 .story-start {
   scroll-snap-align: start;
 }
@@ -43,7 +47,7 @@
   font-family: "Inter";
 }
 .secondaryImgCon {
-  width: 40%;
+  width: 80%;
   margin: 3rem auto 2rem auto;
 }
 .secondaryImg {
@@ -248,7 +252,7 @@ td, th {
     font-size: 12px;
   }
   .secondaryImgCon {
-    width: 70%;
+    width: 90%;
   }
   .fixedScrollToTop{
     position: fixed;
