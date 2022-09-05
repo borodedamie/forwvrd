@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { FaGreaterThan } from 'react-icons/fa'
 import { AiOutlineSearch, AiOutlineUp } from 'react-icons/ai'
 import logo from '../../images/logo.png'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import './Navbar.css'
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { useQuery, gql } from '@apollo/client';
@@ -25,6 +25,9 @@ const { loading, error, data } = useQuery(GET_CATEGORIES);
 
 const { search, setSearch, setSpinner } = useContext(GlobalContext)
 const [ displaySearch, setDisplaySearch ] = useState(false)
+const [ buttonState, setButtonState ] = useState(false)
+
+let toggleClassActive = buttonState ? 'active' : null
 
 const navigate = useNavigate()
     
@@ -96,12 +99,21 @@ if (error) return <span>Error : {error.message}</span>;
 
                 <div className="search-options">
                     <div className="btnFlex" >
-                    { data?.categoryCollection?.items.map((item) => (
-                        <button onClick={ () => {
-                            // setAboutPage(false)
-                            navigate(`/category/${item.sys.id }`)
-                            } }    
-                            key={ item.sys.id }>{ item?.name.toUpperCase() }</button>
+                    { data?.categoryCollection?.items.map((item, i) => (
+                        // <button 
+                        //     className={`${toggleClassActive}`}
+                        //     onClick={ (event) => {
+                        //     event.preventDefault()
+                        //     setButtonState(true)
+                        //     navigate(`/category/${item.sys.id }`)
+                        //     } }    
+                        //     key={ item.sys.id }>{ item?.name.toUpperCase() }
+                        // </button>
+                        <NavLink 
+                            className='btnFlexBtn'
+                            to={`/category/${item.sys.id}`} 
+                            key={ item.sys.id }>{ item?.name.toUpperCase() }
+                        </NavLink>
                     )) }
                     </div>
 
