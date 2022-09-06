@@ -256,7 +256,7 @@ const renderOptions = (links) => {
         }).map((item, i) => (
         <div key={ item?.sys.id } className='story-start'>
             <div className='text' >
-                <h1>{ item?.title }</h1>
+                <h1 style={{ color: "#8c94ac" }}>{ item?.title }</h1>
                 <p className='editor-name'>{ item?.author.name } · { convertDate(item?.sys.publishedAt) }</p>
             </div>
 

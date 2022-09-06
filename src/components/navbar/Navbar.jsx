@@ -1,8 +1,8 @@
 import { useState, useContext } from "react";
 import { FaGreaterThan } from 'react-icons/fa'
 import { AiOutlineSearch, AiOutlineUp } from 'react-icons/ai'
-import logo from '../../images/logo.png'
-import { Link, NavLink, useNavigate } from 'react-router-dom'
+import logo from '../../images/forwardLogo.png'
+import { Link, NavLink } from 'react-router-dom'
 import './Navbar.css'
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { useQuery, gql } from '@apollo/client';
@@ -25,11 +25,6 @@ const { loading, error, data } = useQuery(GET_CATEGORIES);
 
 const { search, setSearch, setSpinner } = useContext(GlobalContext)
 const [ displaySearch, setDisplaySearch ] = useState(false)
-const [ buttonState, setButtonState ] = useState(false)
-
-let toggleClassActive = buttonState ? 'active' : null
-
-const navigate = useNavigate()
     
 if (loading) return console.log('Loading...');
 if (error) return <span>Error : {error.message}</span>;
@@ -79,7 +74,6 @@ if (error) return <span>Error : {error.message}</span>;
                 <div className="discover">
                     
                 </div>
-
                 <div className="searchCon">
                 <div className='search-wrapper'>
                 <input 
@@ -96,7 +90,6 @@ if (error) return <span>Error : {error.message}</span>;
                         <AiOutlineSearch style={{ fontSize: '2rem', cursor:'pointer' }} onClick={ () => setDisplaySearch(false) }/>
                     </div>
                 </div>  
-
                 <div className="search-options">
                     <div className="btnFlex" >
                     { data?.categoryCollection?.items.map((item, i) => (
@@ -116,8 +109,6 @@ if (error) return <span>Error : {error.message}</span>;
                         </NavLink>
                     )) }
                     </div>
-
-
                     <div className="btnFlex Flex2">
                         <p className="viewed">Most viewed</p>
                         <p className="recent">Most Recent</p>
