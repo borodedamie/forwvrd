@@ -159,7 +159,7 @@ window.addEventListener('scroll', makeBtnVisible);
         },
   
         [ BLOCKS.HEADING_3 ]: (node, children) => {
-            return <h3 className='heading-three' style={{ fontSize: "20px", marginTop: "1rem", marginBottom: "1rem"}}>{ children }</h3>
+            return <h3 className='heading-three' style={{ fontSize: "20px", marginTop: "1rem", marginBottom: "1rem", color: "#8c94ac" }}>{ children }</h3>
         },
 
         [ BLOCKS.HEADING_4 ]: (node, children) => {
@@ -224,7 +224,7 @@ if (error) return <ErrorPage message = {error.message} />;
         }).map((item, i) => (
             <div className='mainContent' key={ item?.sys.id }>
                 <div className='text'>
-                    <h1>{ item?.title }</h1>
+                    <h1 className="story-heading">{ item?.title }</h1>
                     <p className='editor-name'>{ item?.author.name } . { convertDate( item?.sys.firstPublishedAt )} </p>
                 </div>
                 <div className='blog-Img-con'>
