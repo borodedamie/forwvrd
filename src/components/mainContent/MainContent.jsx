@@ -206,7 +206,7 @@ const renderOptions = (links) => {
       },
 
       [ BLOCKS.HEADING_3 ]: (node, children) => {
-          return <h3 className='heading-three' style={{ fontSize: "20px", marginTop: "1rem", marginBottom: "1rem"}}>{ children }</h3>
+          return <h3 className='heading-three' style={{ fontSize: "20px", marginTop: "1rem", marginBottom: "1rem", color: "#8c94ac" }}>{ children }</h3>
       },
 
       [ BLOCKS.HEADING_4 ]: (node, children) => {
@@ -256,7 +256,7 @@ const renderOptions = (links) => {
         }).map((item, i) => (
         <div key={ item?.sys.id } className='story-start'>
             <div className='text' >
-                <h1 style={{ color: "#8c94ac" }}>{ item?.title }</h1>
+                <h1 className="story-heading">{ item?.title }</h1>
                 <p className='editor-name'>{ item?.author.name } · { convertDate(item?.sys.publishedAt) }</p>
             </div>
 

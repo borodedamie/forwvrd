@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types'
 import { useQuery, gql } from '@apollo/client'
 import LoadingSpinner from '../loadingSpinner/LoadingSpinner'
-import logo from '../../images/logo.png'
+import logo from '../../images/forwardLogo.png'
 import { Link } from 'react-router-dom'
 
 function Story() {
@@ -91,8 +91,28 @@ const renderOptions = (links) => {
         return <p>{ children }</p>
       },
 
+      [ BLOCKS.HEADING_1 ]: (node, children) => {
+        return <h1>{ children }</h1>
+      },
+
+      [ BLOCKS.HEADING_2 ]: (node, children) => {
+        return <h2>{ children }</h2>
+      },
+
       [ BLOCKS.HEADING_3 ]: (node, children) => {
-        return <h3>{ children }</h3>
+        return <h3 className='heading-three' style={{ fontSize: "20px", marginTop: "1rem", marginBottom: "1rem", color: "#8c94ac" }}>{ children }</h3>
+      },
+      
+      [ BLOCKS.HEADING_4 ]: (node, children) => {
+        return <h4>{ children }</h4>
+      },
+
+      [ BLOCKS.HEADING_5 ]: (node, children) => {
+        return <h5>{ children }</h5>
+      },
+
+      [ BLOCKS.HEADING_6 ]: (node, children) => {
+        return <h6>{ children }</h6>
       },
 
       [INLINES.HYPERLINK]: ({ data }, children) => (
@@ -137,11 +157,11 @@ const renderOptions = (links) => {
     </div>        
     <div className='mainContent'>
       <div className='text'>
-        <h1>{ data?.story.title }</h1>
+        <h1 className="story-heading">{ data?.story.title }</h1>
         <p className='editor-name'>{ data?.story.author.name } . { convertDate( data?.story.sys.publishedAt )}</p>
       </div>
       <div className="blog-Img-con">
-        <img src={ data?.story.cover.url } alt="story-img"   className='blog-img'/>
+        <img src={ data?.story.cover.url } alt="story-img" className='blog-img'/>
       </div>
       <div className='text'>
         <p  className='story'>{ data?.story.introduction }</p>
