@@ -30,6 +30,7 @@ body{
 .discover-Btn{
     height: 20px;
     width: 20px;
+    object-fit: cover;
     display: flex;
     align-items: center;
     justify-content: center;

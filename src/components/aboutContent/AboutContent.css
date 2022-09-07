@@ -84,7 +84,7 @@ li {
   display: flex;
   margin-top: 3.6rem;
   gap: 1rem;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #346c64;
   width: 270px;
   justify-content: space-between;
   padding-bottom: .7rem;
