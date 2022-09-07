@@ -108,7 +108,7 @@ if ( state.succeeded ) {
                             errors={ state.errors } 
                         />
                         <button type='submit' className="discover-Btn" disabled={ state.submitting }>
-                            <FaGreaterThan  style={{cursor:'pointer'}}/>
+                            <FaGreaterThan  style={{ cursor:'pointer' }}/>
                         </button>
                     </div>
                 </form>
