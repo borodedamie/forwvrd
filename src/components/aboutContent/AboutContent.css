@@ -5,6 +5,12 @@
   padding: 5.4rem 2rem 0rem 2rem;
   /* margin-left:-11rem; */
 }
+.about-heading {
+  color: #8c94ac;
+}
+.about-sub-heading {
+  color: #346c64;
+}
 .aboutImg {
   width: 85%;
 }
@@ -33,6 +39,7 @@ li {
   line-height: 25px;
   letter-spacing: 0.01em;
   text-align: left;
+  color: #346c64;
 }
 .row3 {
   margin-top: 35%;
@@ -49,6 +56,7 @@ li {
   line-height: 34px;
   letter-spacing: 0.01em;
   text-align: left;
+  color: #8c94ac;
 }
 .roles-section {
   margin-bottom: 1.6rem;
@@ -60,6 +68,7 @@ li {
   line-height: 20px;
   letter-spacing: 0.01em;
   text-align: left;
+  color: #346c64;
 }
 .role {
   font-family: Inter;
@@ -68,6 +77,7 @@ li {
   line-height: 25px;
   letter-spacing: 0.01em;
   text-align: left;
+  color: #346c64;
 }
 .input-con-flex {
   display: flex;

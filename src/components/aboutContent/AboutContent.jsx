@@ -27,8 +27,8 @@ if ( state.succeeded ) {
     return (
         <div className='aboutContent'>
         <div className="row1">
-            <h1>About</h1>
-            <p>Tuesday 28 June 2022</p>
+            <h1 className='about-heading'>About</h1>
+            <p className='about-sub-heading'>Tuesday 28 June 2022</p>
 
             <div className="aboutSection">
                 <p>

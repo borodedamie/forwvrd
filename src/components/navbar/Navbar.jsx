@@ -53,7 +53,7 @@ if (error) return <span>Error : {error.message}</span>;
             <div className="search-box">
                 <div className="search-box-flex">
                     <div onClick={ () => setDisplaySearch(true) } className="discover-Btn">
-                        <FaGreaterThan  style={{cursor:'pointer'}}/>
+                        <FaGreaterThan  style={{ cursor:'pointer' }}/>
                     </div>
                     </div>
                     <div className="searchBtn">
@@ -61,7 +61,7 @@ if (error) return <span>Error : {error.message}</span>;
                             <p>Discover</p>
                         </div>
                     <div className="search-display">
-                        <AiOutlineSearch style={{ fontSize: '2rem' }} onClick={ () => setDisplaySearch(true) } />
+                        <AiOutlineSearch style={{ fontSize: '2rem', color: '#346c64' }} onClick={ () => setDisplaySearch(true) } />
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@ if (error) return <span>Error : {error.message}</span>;
         <div className="search-box dropDownState">
             <div className="search-box-flex">
                 <div onClick={ () => setDisplaySearch(false) } className="discover-Btn" >
-                    <AiOutlineUp  style={{cursor:'pointer'}}/>
+                    <AiOutlineUp  style={{cursor:'pointer', fontSize: '1.5rem' }}/>
                 </div>
             </div>
           
@@ -92,7 +92,7 @@ if (error) return <span>Error : {error.message}</span>;
                     //    onKeyPress={ onEnter }
                 />
                     <div className="search-display">
-                        <AiOutlineSearch style={{ fontSize: '2rem', cursor:'pointer' }} onClick={ () => setDisplaySearch(false) }/>
+                        <AiOutlineSearch style={{ fontSize: '2rem', cursor:'pointer', color: '#346c64' }} onClick={ () => setDisplaySearch(false) }/>
                     </div>
                 </div>  
                 <div className="search-options">

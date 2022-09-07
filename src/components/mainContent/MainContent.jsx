@@ -312,7 +312,7 @@ const renderOptions = (links) => {
 
                 <div className="terms">
                     <p>Terms and Conditions <br /> Privacy Policy</p>
-              </div>
+                </div>
             </div>
 
             <div className="fixedRight">

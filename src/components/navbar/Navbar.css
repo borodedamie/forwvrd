@@ -33,7 +33,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color:  #000;
+    background-color: #346c64;
     border-radius: 50%;
     color: #fff;
 }
@@ -47,10 +47,11 @@ body{
 }
 .discover p{
     font-size: 1.4rem;
+    color: #8c94ac;
 }
 .discover-Btn i{
     font-weight: 900;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
 } 
 .searchBtn input{
     outline: 0;
@@ -72,14 +73,18 @@ body{
 .btnFlexBtn {
     cursor: pointer;
     padding: .5rem ;
-    border: 1px solid #000;
+    border: 1px solid #8c94ac;
     background-color: #fff;
     border-radius: 3px;
     font-size: .9rem;
-    color: #000;
+    color: #8c94ac;
     /* text-align: center; */
 }
-
+.btnFlexBtn:hover {
+    background-color: #0b7166;
+    color: #fff;
+    border: none;
+}
 .Flex2{
     display:flex;
     justify-content: space-between;
@@ -94,13 +99,14 @@ body{
 .logo:hover {
     cursor: pointer;
 }
-.viewed:hover {
-    cursor: pointer;
-}
-.recent:hover {
-    cursor: pointer;
+
+.viewed .recent {
+    color: #0b7166;
 }
 
+.viewed:hover .recent:hover {
+    cursor: pointer;
+}
 
 @media  (max-width:576px) {
     .btnFlex{
