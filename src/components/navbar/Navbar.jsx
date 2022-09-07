@@ -22,7 +22,12 @@ query {
 
 function Navbar() {
 const { loading, error, data } = useQuery(GET_CATEGORIES);
-
+// const NavLinkStyles = ({ isActive }) => {
+//     return{
+//         backgroundColor: isActive ? '#0b7166' : 'transparent',
+//         textDecoration: isActive ? 'none' : 'underline'
+//     }
+// }
 const { search, setSearch, setSpinner } = useContext(GlobalContext)
 const [ displaySearch, setDisplaySearch ] = useState(false)
     
@@ -102,7 +107,8 @@ if (error) return <span>Error : {error.message}</span>;
                         //     } }    
                         //     key={ item.sys.id }>{ item?.name.toUpperCase() }
                         // </button>
-                        <NavLink 
+                        <NavLink
+                            // style={{NavLinkStyles}}
                             className='btnFlexBtn'
                             to={`/category/${item.sys.id}`} 
                             key={ item.sys.id }>{ item?.name.toUpperCase() }

@@ -77,12 +77,19 @@ body{
     border-radius: 3px;
     font-size: .9rem;
     color: #000;
+    /* text-align: center; */
 }
+
 .Flex2{
     display:flex;
     justify-content: space-between;
     margin-top: 3rem;
     font-size: 1.2rem;
+}
+.btnFlexBtn.active{
+    background-color: #0b7166;
+    color: #fff;
+    border: none;
 }
 .logo:hover {
     cursor: pointer;
