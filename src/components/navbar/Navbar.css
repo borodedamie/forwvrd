@@ -6,7 +6,7 @@
     top: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(140, 148, 172, 0) 100%);
 }
 body{
     font-family: 'Inter', sans-serif;
@@ -81,7 +81,7 @@ body{
     /* text-align: center; */
 }
 .btnFlexBtn:hover {
-    background-color: #0b7166;
+    background-color: #346c64;
     color: #fff;
     border: none;
 }
@@ -92,7 +92,7 @@ body{
     font-size: 1.2rem;
 }
 .btnFlexBtn.active{
-    background-color: #0b7166;
+    background-color: #346c64;
     color: #fff;
     border: none;
 }
@@ -100,8 +100,12 @@ body{
     cursor: pointer;
 }
 
-.viewed .recent {
-    color: #0b7166;
+.viewed {
+    color: #346c64;
+}
+
+.recent {
+    color: #346c64;
 }
 
 .viewed:hover .recent:hover {

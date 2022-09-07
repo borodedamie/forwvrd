@@ -299,7 +299,7 @@ const renderOptions = (links) => {
         <div className="fixedScroll" style={{display: visibleBtn ? 'block' : 'none'}}>
             <div className="discover-Btn fixedScrollToTop" >
               <AiOutlineUp onClick={ scrollToTop } 
-                style={{color:'#fff', cursor:'pointer',fontSize: '1.6rem'}}/>
+                style={{ color:'#FFFF', cursor:'pointer', fontSize: '1.7rem'}}/>
             </div> 
         </div>
   </div> }
