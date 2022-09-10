@@ -95,6 +95,18 @@ li {
   outline: none;
   padding: 0 1rem 0rem 0.7rem;
 }
+@media (min-width: 1500px){
+  .aboutSection p {
+    font-size: 25px;
+    font-family: Inter;
+    font-weight: 300;
+    line-height: 35px;
+    letter-spacing: 0.015em;
+    text-align: left;
+    color: #346c64;
+    /* background-color: #346c64; */
+  }
+}
 /* Media Queries */
 @media (max-width: 768px) {
   .aboutContent {
