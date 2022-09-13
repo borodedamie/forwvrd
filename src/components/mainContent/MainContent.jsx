@@ -319,7 +319,7 @@ const renderOptions = (links) => {
                     <p>IG</p>
                 </div>
             </div>
-        </div>
+  </div>
   </>
   )
 }

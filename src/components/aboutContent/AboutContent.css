@@ -17,9 +17,9 @@
 .aboutImg img {
   width: 100%;
 }
-li {
+/* li {
   list-style-type: none;
-}
+} */
 
 .row1{
   margin-top: 1rem;
@@ -70,7 +70,9 @@ li {
   letter-spacing: 0.01em;
   text-align: left;
   color: #346c64;
+  list-style-type: none;
 }
+
 .role {
   font-family: Inter;
   font-size: 17px;
@@ -79,6 +81,7 @@ li {
   letter-spacing: 0.01em;
   text-align: left;
   color: #346c64;
+  list-style-type: none;
 }
 .input-con-flex {
   display: flex;
