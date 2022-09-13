@@ -31,13 +31,9 @@ if ( state.succeeded ) {
             <p className='about-sub-heading'>Tuesday 28 June 2022</p>
 
             <div className="aboutSection">
-                <p>
-                    Forward is a publication to inspire. Conceived by Nonso Okpala as an extension of his transformative agenda. Forward is for the future. Forward is for tomorrow. We publish new thematic articles weekly. Anywhere between 4 and 5 articles for your reading pleasure. In the form of photos, videos, and long and short form text.
-                </p>
-
-                <p>
-                    Forward is fresh and bold. It is easy to read. Easy to share. Easy to bring to life. Meant to change your life. We are forward, you are forward. The world is forward. Never stop marching forward.
-                </p>
+                <p>Forward is a publication designed to inspire people everywhere. Conceived as an extension of Nonso Okpala's “Transformative Generosity”, Forward presents thoughtful pieces on life, work, the economy, sports, arts, entertainment and more. Each feature is written and illustrated to equip readers with insights that help get them closer to their potential.</p>
+                <p>With its intuitive endless scroll design, content stays front and center, allowing you to immerse yourself in each piece and seamlessly move from one to the next. The intuitive “discover” arrow allows you to sort pieces by interest or search by keyword. Forward is super fast and responsive, and the combination of text and illustration look great on any screen (desktop, tablet, or phone).</p>
+                <p>Our team of writers, editors, illustrators, and designers, work thoughtfully to create features that are as insightful as they are easy to read - the very best content to keep you going forward.</p>
             </div>
         </div>
 
@@ -111,8 +107,7 @@ if ( state.succeeded ) {
                             <FaGreaterThan  style={{ cursor:'pointer' }}/>
                         </button>
                     </div>
-                </form>
-                
+                </form>             
             </div>
 
 
