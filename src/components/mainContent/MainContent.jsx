@@ -308,7 +308,7 @@ const renderOptions = (links) => {
               <Link to="/about" reloadDocument="true"><h5 className="about">ABOUT</h5></Link>
 
                 <div className="terms">
-                    <p>Terms and Conditions</p>
+                    <p onClick={ () => navigate('/terms') }>Terms and Conditions</p>
                     <p onClick={ () => navigate('/privacy') }>Privacy Policy</p>
                 </div>
             </div>
