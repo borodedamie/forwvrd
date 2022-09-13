@@ -5,14 +5,12 @@ import { FaGreaterThan, FaShareAlt } from 'react-icons/fa'
 import { GrClose } from 'react-icons/gr'
 import {  AiOutlineUp } from 'react-icons/ai'
 import { useState, useContext } from 'react'
-// Get FetchMore Network Status
-import { NetworkStatus } from '@apollo/client';
 import { Waypoint } from 'react-waypoint'
 import { GlobalContext } from "../../contexts/GlobalContext"
 import { useQuery, gql } from '@apollo/client';
 import LoadingSpinner from '../loadingSpinner/LoadingSpinner'
 import ErrorPage from '../errorPage/ErrorPage'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const PAGE_SIZE = 3
 
@@ -66,11 +64,10 @@ query GetStories( $limit: Int!, $skip: Int ) {
 
 function MainContent() {
 
-  const { search, spinner } = useContext(GlobalContext)
-  
+  const { search, spinner } = useContext(GlobalContext)  
   const { loading, error, data, fetchMore, networkStatus  } = useQuery(GET_STORIES, { variables: { limit: PAGE_SIZE, skip: 0 } })
-  
   const [visibleBtn , setVisibleBtn] = useState(false)
+  const navigate = useNavigate()
 
   // const [ clicks, setClicks ] = useState({
   //   storyId: "",
@@ -311,7 +308,8 @@ const renderOptions = (links) => {
               <Link to="/about" reloadDocument="true"><h5 className="about">ABOUT</h5></Link>
 
                 <div className="terms">
-                    <p>Terms and Conditions <br /> Privacy Policy</p>
+                    <p>Terms and Conditions</p>
+                    <p onClick={ () => navigate('/privacy') }>Privacy Policy</p>
                 </div>
             </div>
 
