@@ -144,6 +144,7 @@
   font-size: 1.2rem;
   font-weight: bold;
   color: #8c94ac;
+  cursor:pointer;
 }
 .about {
   text-decoration: none;
@@ -152,6 +153,9 @@
 
 .terms {
   color: #346c64;
+}
+.terms p{
+  margin-bottom: 0;
 }
 .about:hover {
   cursor: pointer;

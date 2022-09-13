@@ -4,11 +4,11 @@ import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types'
 import { useQuery, gql } from '@apollo/client'
 import LoadingSpinner from '../loadingSpinner/LoadingSpinner'
 import logo from '../../images/forwardLogo.png'
-import { Link } from 'react-router-dom'
+import { Link , useNavigate} from 'react-router-dom'
 
 function Story() {
 const { id } = useParams()
-
+const navigate = useNavigate()
 const GET_STORY = gql`
 query {
   story(id: "${id}") {
@@ -175,9 +175,10 @@ const renderOptions = (links) => {
     <div className="fixedLeft">
       <Link to="/about" reloadDocument="true"><h5 className="about">ABOUT</h5></Link>
 
-        <div className="terms">
-          <p>Terms and Conditions <br /> Privacy Policy</p>
-        </div>
+      <div className="terms">
+        <p>Terms and Conditions</p>
+         <p onClick={ () => navigate('/privacy') }>Privacy Policy</p>
+     </div>
     </div>
 
     <div className="fixedRight">
