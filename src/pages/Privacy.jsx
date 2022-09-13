@@ -31,7 +31,7 @@ window.addEventListener('scroll', makeBtnVisible);
   return (
     <>
         <Navbar />
-        <div className='mainContent'>
+        <div className='mainContent privacypage'>
             <div className='text'>
                <h2 className='story-heading' style={{ fontSize: '3.8rem' }}>PRIVACY NOTICE</h2>
                <p className='about-sub-heading'>Last updated September 12, 2022</p>
@@ -51,7 +51,7 @@ window.addEventListener('scroll', makeBtnVisible);
                 <p className='story'>We collect personal information that you voluntarily provide to us when you express an interest in obtaining information about us or our products and Services, when you participate in activities on the Services, or otherwise when you contact us.</p>
                 <p className='story'>Personal Information Provided by You. The personal information that we collect depends on the context of your interactions with us and the Services, the choices you make, and the products and features you use. The personal information we collect may include the following:</p>
                 <ul className='story' style={{ listStyle: 'square inside' }}>
-                    <li>email addresses</li>
+                    <li>Email addresses</li>
                 </ul>
                 <p className='story'>Sensitive Information. We do not process sensitive information.</p>
                 <p className='story'>All personal information that you provide to us must be true, complete, and accurate, and you must notify us of any changes to such personal information.</p>

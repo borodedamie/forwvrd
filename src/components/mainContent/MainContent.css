@@ -215,7 +215,15 @@ td, th {
   text-align: left;
   padding: 8px;
 }
-
+.privacypage{
+  text-align: justify;
+}
+.privacypage li{
+  margin-left: 2.5rem;
+}
+.privacypage .story-heading{
+  font-weight: bold;
+}
 /* Media Queries */
 @media (max-width: 576px) {
   input, select, textarea {
