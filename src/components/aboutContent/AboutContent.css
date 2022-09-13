@@ -1,7 +1,7 @@
 .aboutContent {
   display: grid;
   grid-template-columns: 1.5fr 1fr 2fr;
-  gap: 3.5rem;
+  gap: 4.5rem;
   padding: 5.4rem 2rem 0rem 2rem;
   /* margin-left:-11rem; */
 }
