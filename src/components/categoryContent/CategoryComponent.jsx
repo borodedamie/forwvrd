@@ -11,13 +11,13 @@ import { GlobalContext } from "../../contexts/GlobalContext"
 import { useState, useContext } from 'react'
 import LoadingSpinner from '../loadingSpinner/LoadingSpinner'
 import ErrorPage from '../errorPage/ErrorPage'
-import { Link } from 'react-router-dom'
+import { Link , useNavigate} from 'react-router-dom'
 
 const PAGE_SIZE = 3
 
 function CategoryComponent() {
 const { categoryId } = useParams()
-
+const navigate = useNavigate()
 const GET_CATEGORY_STORIES = gql`
 query GetCategoryStory ($limit: Int!, $skip: Int){
     category(id: "${categoryId}") {
@@ -277,9 +277,10 @@ if (error) return <ErrorPage message = {error.message} />;
             <div className="fixedLeft">
               <Link to="/about" reloadDocument="true"><h5 className="about">ABOUT</h5></Link>
 
-                <div className="terms">
-                    <p>Terms and Conditions <br /> Privacy Policy</p>
-              </div>
+              <div className="terms">
+                    <p>Terms and Conditions</p>
+                    <p onClick={ () => navigate('/privacy') }>Privacy Policy</p>
+                </div>
             </div>
 
             <div className="fixedRight">

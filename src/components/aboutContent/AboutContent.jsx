@@ -1,7 +1,7 @@
 import { FaGreaterThan } from 'react-icons/fa'
 import aboutImg from '../../images/forward-about.png'
 import './AboutContent.css'
-import { Link} from 'react-router-dom'
+import { Link , useNavigate} from 'react-router-dom'
 
 import { useForm, ValidationError } from '@formspree/react'
 import { toast } from 'react-toastify';
@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 
 function AboutContent() {
 const [ state, handleSubmit ] = useForm('xnqrqnlr')
+const navigate = useNavigate()
 
 if ( state.succeeded ) {
     toast.success('Thank you for joining!', {
@@ -120,9 +121,12 @@ if ( state.succeeded ) {
               <Link to="/about" reloadDocument="true"><h5 className="about">ABOUT</h5></Link>
               {/* <h5 onClick={ () => setAboutPage(true) } className='about'>ABOUT</h5> */}
 
+                
                 <div className="terms">
-                    <p>Terms and Conditions <br /> Privacy Policy</p>
-              </div>
+                    <p>Terms and Conditions</p>
+                    <p onClick={ () => navigate('/privacy') }>Privacy Policy</p>
+                </div>
+             
                 </div>
 
                 <div className="fixedRight">
