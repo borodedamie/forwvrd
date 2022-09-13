@@ -1,6 +1,6 @@
 .aboutContent {
   display: grid;
-  grid-template-columns: 1fr 1fr 2fr;
+  grid-template-columns: 1.5fr 1fr 2fr;
   gap: 3.5rem;
   padding: 5.4rem 2rem 0rem 2rem;
   /* margin-left:-11rem; */
@@ -39,7 +39,7 @@ li {
   font-weight: 300;
   line-height: 25px;
   letter-spacing: 0.01em;
-  text-align: left;
+  text-align: justify;
   color: #346c64;
 }
 .row3 {
@@ -94,6 +94,15 @@ li {
   border: 0;
   outline: none;
   padding: 0 1rem 0rem 0.7rem;
+}
+.aboutPage .fixedFlex{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding: 2rem 2rem 1rem 2rem;
+}
+.aboutPage .fixedLeft , .aboutPage .fixedRight{
+  position: static;
 }
 @media (min-width: 1500px){
   .aboutSection p {
