@@ -1,5 +1,5 @@
 import { FaGreaterThan } from 'react-icons/fa'
-import aboutImg from '../../images/forward-about.png'
+import aboutImg from '../../images/forward-about-image.png'
 import './AboutContent.css'
 import { Link , useNavigate} from 'react-router-dom'
 
