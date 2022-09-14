@@ -1,6 +1,6 @@
 .aboutContent {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 2fr;
+  grid-template-columns: 1.5fr 1.5fr 2fr;
   gap: 4.5rem;
   padding: 5.4rem 2rem 0rem 2rem;
   /* margin-left:-11rem; */
@@ -12,7 +12,7 @@
   color: #346c64;
 }
 .aboutImg {
-  width: 85%;
+  width: 100%;
 }
 .aboutImg img {
   width: 100%;
@@ -39,11 +39,11 @@
   font-weight: 300;
   line-height: 25px;
   letter-spacing: 0.01em;
-  text-align: justify;
+  /* text-align: justify; */
   color: #346c64;
 }
 .row3 {
-  margin-top: 35%;
+  margin-top: 50%;
 }
 
 .row2 {
@@ -107,6 +107,22 @@
 .aboutPage .fixedLeft , .aboutPage .fixedRight{
   position: static;
 }
+
+.submit-btn{
+  height: 22px;
+  width: 22px;
+  object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #346c64;
+  border-radius: 50%;
+  color: #fff;
+  padding: 6px ;
+  border: none;
+}
+
+
 @media (min-width: 1500px){
   .aboutSection p {
     font-size: 25px;

@@ -45,7 +45,7 @@ if ( state.succeeded ) {
             </div>
 
             <div className="about-title">
-                <h3>Team</h3>
+                <h3 style={{ marginTop: '5rem'}}>Team</h3>
             </div>
 
             <div className="roles-section">
@@ -74,7 +74,7 @@ if ( state.succeeded ) {
 
             <div className="row3">
                 <div className="about-title">
-                <h3>Contact</h3>
+                <h3 style={{ marginTop: '5rem'}}>Contact</h3>
                 </div>
 
                 <div className="roles-section">
@@ -88,7 +88,7 @@ if ( state.succeeded ) {
                 </div>
 
                 <div className="about-title">
-                <h3>Newsletter</h3>
+                <h3 style={{ marginTop: '4.2rem'}}>Newsletter</h3>
                 </div>
 
                 <li className="role">Subscribe to receive updates</li>
@@ -105,7 +105,7 @@ if ( state.succeeded ) {
                             field='email'
                             errors={ state.errors } 
                         />
-                        <button type='submit' className="discover-Btn" disabled={ state.submitting }>
+                        <button type='submit' className="submit-btn" disabled={ state.submitting }>
                             <FaGreaterThan  style={{ cursor:'pointer' }}/>
                         </button>
                     </div>
