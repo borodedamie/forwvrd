@@ -123,7 +123,7 @@ if ( state.succeeded ) {
 
                 
                 <div className="terms">
-                    <p>Terms and Conditions</p>
+                    <p onClick={ () => navigate('/terms') }>Terms and Conditions</p>
                     <p onClick={ () => navigate('/privacy') }>Privacy Policy</p>
                 </div>
              
