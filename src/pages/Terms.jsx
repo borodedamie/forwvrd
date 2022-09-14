@@ -31,7 +31,7 @@ function Terms() {
   return (
     <>
       <Navbar />
-        <div className='mainContent'>
+        <div className='mainContent privacypage'>
             <div className='text'>
                 <h3 className='story-heading'>1. AGREEMENT TO TERMS</h3>
                 <p className='story'>These Terms of Use constitute a legally binding agreement made between you, whether personally or on behalf of an entity (“you”) and Forward Initiative ("Company," “we," “us," or “our”), concerning your access to and use of the <a href="http://www.forwardinitiative.com">http://www.forwardinitiative.com</a> website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto (collectively, the “Site”). We are registered in Nigeria and have our registered office at 58 Raymond Njoku, Lagos, Lagos. You agree that by accessing the Site, you have read, understood, and agreed to be bound by all of these Terms of Use. IF YOU DO NOT AGREE WITH ALL OF THESE TERMS OF USE, THEN YOU ARE EXPRESSLY PROHIBITED FROM USING THE SITE AND YOU MUST DISCONTINUE USE IMMEDIATELY.</p>
