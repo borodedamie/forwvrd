@@ -117,6 +117,7 @@ const renderOptions = (links) => {
 
       [INLINES.HYPERLINK]: ({ data }, children) => (
         <a
+          className='hyperLinks'
           href={data.uri}
           target='_blank'
           rel='noopener noreferrer'

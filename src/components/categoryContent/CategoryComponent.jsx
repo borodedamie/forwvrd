@@ -159,11 +159,11 @@ window.addEventListener('scroll', makeBtnVisible);
         },
   
         [ BLOCKS.HEADING_3 ]: (node, children) => {
-            return <h3 className='heading-three' style={{ fontSize: "20px", marginTop: "1rem", marginBottom: "1rem", color: "#8c94ac" }}>{ children }</h3>
+            return <h3 style={{ fontSize: "20px", marginTop: "1rem", marginBottom: "1rem", color: "#8c94ac" }}>{ children }</h3>
         },
 
         [ BLOCKS.HEADING_4 ]: (node, children) => {
-          return <h4>{ children }</h4>
+          return <h4 style={{ fontSize: "18px", marginTop: "1rem", marginBottom: "1rem", color: "#8c94ac" }}>{ children }</h4>
         },
 
         [ BLOCKS.HEADING_5 ]: (node, children) => {
@@ -176,6 +176,7 @@ window.addEventListener('scroll', makeBtnVisible);
   
         [INLINES.HYPERLINK]: ({ data }, children) => (
           <a
+            className='hyperLinks'
             href={data.uri}
             target='_blank'
             rel='noopener noreferrer'

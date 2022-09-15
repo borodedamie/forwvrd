@@ -110,11 +110,7 @@ if ( state.succeeded ) {
                         </button>
                     </div>
                 </form>             
-            </div>
-
-           
-
-           
+            </div>         
         </div>
         <div className="fixedFlex" >
                 <div className="fixedLeft">
