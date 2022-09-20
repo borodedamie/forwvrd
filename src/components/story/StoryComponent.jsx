@@ -184,8 +184,8 @@ const renderOptions = (links) => {
 
     <div className="fixedRight">
       <div className="social-links">
-        <p>T</p>
-        <p>IG</p>
+        <a href='https://www.instagram.com/forwardinitiative/' target='_blank'><p>T</p></a>
+        <a href='https://twitter.com/forwardinitia1' target='_blank'><p>IG</p></a>
       </div>
     </div>
   </div>

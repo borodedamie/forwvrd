@@ -49,8 +49,6 @@ function LoginComponent() {
                     <div className="input-con">
                         <input type="submit" />
                     </div>
-
-
                </form>
             </div>
            </div>

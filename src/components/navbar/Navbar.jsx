@@ -43,7 +43,7 @@ if (error) return <span>Error : {error.message}</span>;
 
     return (
         <div className='header'>
-            <Link to="/home">
+            <Link to="/">
                 <div className="logo">
                     <img src={logo} alt="" style={{ width: '100px' }} />
                 </div>

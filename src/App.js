@@ -3,7 +3,6 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Story from './pages/Story'
 import Category from './pages/Category'
-import Login from './pages/Login'
 import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
 import { ToastContainer } from 'react-toastify';
@@ -16,8 +15,7 @@ function App() {
     <HttpsRedirect>
     <Router>
       <Routes>
-        <Route path='/' element={ <Login /> } />
-        <Route path='/home' element={ <Home /> } />
+        <Route path='/' element={ <Home /> } />
         <Route path='/story/:id' element={ <Story /> } />
         <Route path='about' element={ <About /> } />
         <Route path='/category/:categoryId' element={  <Category /> }/>
