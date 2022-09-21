@@ -84,7 +84,7 @@ if ( state.succeeded ) {
 
                 <div className="roles-section">
                 <li className="role-name">General/all enquiries</li>
-                <li className="role"><a href='mailto:forwardinitiativee@gmail.com' style={{ color: '#346c64' }}>forwardinitiativee@gmail.com</a></li>
+                <li className="role"><a href='mailto:info@forwardinitiative.com' style={{ color: '#346c64' }}>info@forwardinitiative.com</a></li>
                 </div>
 
                 <div className="about-title">
